@@ -7,7 +7,10 @@
 
 # testing
 /coverage
-
+.scannerwork/
+/docker-compose.yml
+/sonarqube
+/sonar-project.properties
 # production
 /build
 
