@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body></body>
+  <script>
+    "use strict";
+    let doGarr = [16, 6, 10, 5, 6, 1, 4];
+
+    let calcAverageHumanAge = function (age) {
+      let largeAge = [];
+      let smallAge = [];
+      let humenage = age.map((arr) => {
+        if (arr <= 2) {
+          smallAge.push(2 * arr);
+          return 2 * arr;
+        } else {
+          largeAge.push(2 * arr);
+
+          return 16 + arr * 4;
+        }
+      });
+      let filterHumen = humenage.filter((age) => age > 18);
+      let avergae = filterHumen.reduce(function (acc, cur) {
+        return acc + cur;
+      });
+      console.log(avergae / filterHumen.length);
+      console.log(largeAge, smallAge);
+      return filterHumen;
+    };
+    console.log(calcAverageHumanAge(doGarr));
+
+    //challanges 3 -
+
+    function calcAverageHumanAgenew(ages) {
+      let newage = ages
+        .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+        .filter((age) => age > 18)
+        .reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+      return newage;
+    }
+
+    console.log(calcAverageHumanAgenew(doGarr));
+  </script>
+</html>

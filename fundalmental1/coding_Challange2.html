@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+    .row{display: flex;padding: 40px;justify-content: space-between;}
+      .pannel{background-color:#fff;padding: 20px;border-radius:20px;margin: 20px;width: 50%;box-shadow:0 0 10px #ddd;}
+  .pannel h3{font-size: 30px;margin: 0px 0px 30px;}
+  .pannel h4{font-size: 30px;margin:  30px;}
+
+  .pannel input[type="number"]{border-radius: 10px;height: 30px;width: 100%;margin: 0px 20px;}
+  </style>
+</head>
+<body>
+    <div class="row">
+  <div class="pannel">
+      <h3>Mark Bmi Calculation</h3>
+
+      <div class="row">
+        <input type="number" id="markweight" placeholder="Weight" onkeyup=markweightval()>
+        <input type="number" id="markheight" placeholder="Height" onkeyup=markHeightval()>
+          <button id="calculateBmi" onclick=calculatemarkBMI()>Calculate</button>
+         
+      </div>
+      <h4>Mark BMI Value is: <span id="markBmistore" style="color:Red"></span></h4>
+  </div>
+  <div class="pannel">
+    <h3>John Bmi Calculation</h3>
+
+    <div class="row">
+      <input type="number" id="johnweight" placeholder="Weight" onkeyup=johnweightval()>
+      <input type="number" id="johnheight" placeholder="Height" onkeyup=johnheightval()>
+        <button id="calculateBmijohn">Calculate</button>
+       
+    </div>
+    <h4>John BMI Value is: <span id="JohnBmistore" style="color:Red"></span></h4>
+</div>  
+    </div>
+
+</body>
+</html>
+
+<script>
+let a=10;
+let b=7;
+let c=7;
+
+let largestno= (a>b&& a>c)?`A is Greater ${a}`:(b>a && b>c)?`B is Greater ${b}`:(c>a && c>b)?`C is Greater ${c}`:'Some No are equal';
+console.log(largestno)
+
+
+
+// average Score
+
+   function averagescore(val1,val2,val3){
+   return (val1+val2+val3)/3
+   }
+
+
+  let DlhphicAvgscore=averagescore(99,101,102);
+  let KoalasAvgscore=averagescore(101,95,101);
+  console.log(DlhphicAvgscore);
+  console.log(KoalasAvgscore);
+  let winner=(DlhphicAvgscore>KoalasAvgscore && DlhphicAvgscore>100)?`Dolphins is Winner and its value is ${DlhphicAvgscore}`:(DlhphicAvgscore<KoalasAvgscore && KoalasAvgscore>100)?`Koalas is Winner and its value is ${KoalasAvgscore}`:(DlhphicAvgscore===KoalasAvgscore )?`Draw Koalas: ${KoalasAvgscore} ,  Dolphins: ${DlhphicAvgscore}`:`NO One win`
+    
+    
+  
+  console.log(winner);
+
+// average Score-End
+
+
+
+
+    let calculatebutton=document.getElementById('calculateBmi')
+    let johncalculatebutton=document.getElementById('calculateBmijohn')
+
+    let markHeight=document.getElementById('markheight');
+    let johnHeight=document.getElementById('johnheight');
+    let markWeight=document.getElementById('markweight');
+    let johnWeight=document.getElementById('johnweight');
+    let markHigherBMI;
+
+    
+    let markheightvalue;
+    let markweightvalue;
+    let johnheightvalue;
+    let johnweightvalue;
+    var markBmi;
+    var johnBmi;
+    function markHeightval(){
+       markheightvalue=markHeight.value*0.305;
+       
+    }
+  
+    function markweightval(){
+      markweightvalue=markWeight.value;
+
+    }
+    function johnheightval(){
+      johnheightvalue=johnHeight.value*0.305;
+    }
+    function johnweightval(){
+      johnweightvalue=johnWeight.value;
+
+    }
+    function calculatemarkBMI(){
+      var markBmi;
+      if(markheightvalue&&markweightval!=0){
+        console.log(markheightvalue,markweightvalue);
+            markBmi=markweightvalue/markheightvalue**2
+          document.getElementById('markBmistore').innerHTML=markBmi;
+          compareBmi();
+      }else{
+        alert('Please Enter Value')
+       
+      }
+            
+    };   
+    johncalculatebutton.addEventListener('click', ()=>{
+
+      if(johnheightvalue&&johnweightvalue!=0){
+            console.log(johnheightvalue,johnweightvalue);
+            johnBmi=johnweightvalue/johnheightvalue**2
+          document.getElementById('JohnBmistore').innerHTML=johnBmi;
+          compareBmi();
+      }else{
+        alert('Please Enter Value')
+       
+      }
+
+
+       
+    })
+    function compareBmi(){
+      markBmi=markweightvalue/markheightvalue**2;
+      johnBmi=johnweightvalue/johnheightvalue**2;
+      if(johnBmi>markBmi){
+       alert('john is large BMI');
+      }
+      else if(johnBmi<markBmi){
+        alert('Mark has large BMI')
+      }
+
+    }
+
+
+
+    //Data 1 calculation Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95m tall.
+
+//  markBmi= 78/1.69**2;
+//  johnBmi=92/1.95**2
+//  console.log(markBmi,johnBmi);
+//  markHigherBMI=markBmi>johnBmi;
+//  console.log(markHigherBMI);
+
+    //Data 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76 m tall..
+//    markBmi=95/1.88**2
+//    johnBmi=85/1.76**2
+//   console.log(markBmi,johnBmi);
+//   markHigherBMI=markBmi>johnBmi;
+//   console.log(markHigherBMI);
+
+
+</script>

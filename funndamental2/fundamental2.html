@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="para"></p>
+    <p id="para2"></p>
+  </body>
+  <script>
+    function fruitcut(fruit) {
+      return fruit * 3;
+    }
+    function juice(mango, pineapple) {
+      let mangocut = fruitcut(mango);
+      let pineapplecut = fruitcut(pineapple);
+
+      console.log(
+        `mango: ${mango} and cut is ${mangocut}, pineapple:${pineapple} and cut is ${pineapplecut}`
+      );
+      let juciemix = `In this juice we are using ${mango} and ${pineapple}`;
+      return juciemix;
+    }
+    let juicemaxval = juice(5, 2);
+    console.log(juicemaxval);
+
+    function myjuice(fruit1, fruit2) {
+      var fruitmax = console.log(fruit1, fruit2);
+      return fruit1 + fruit2;
+    }
+
+    document.getElementById("para").innerHTML = myjuice(2, 5);
+
+    //  function declaration
+
+    function myname(firstname, lastname) {
+      return firstname + " " + lastname;
+    }
+    const fullname = myname("Shubham", "Chaturvedi");
+    console.log(fullname);
+
+    //  function expression  or anonymous function;
+    const namefun = function (firstname, lastname) {
+      return firstname + " " + lastname;
+    };
+    const fullname2 = namefun("Shubham", "Chaturvedi");
+    console.log(fullname);
+
+    //Arrow Function
+    const fullname3 = (firstname, lastname) => firstname + " " + lastname;
+
+    const fullnamvalue = fullname3("Shubham", "Chaturvedi");
+
+    document.getElementById("para2").innerHTML = fullnamvalue; //
+
+    let driveageval = (driveage) => driveage - 18 <= 0;
+    let drivevalid = driveageval(18);
+    console.log(drivevalid);
+
+    let retirementfun = (bormdate, firstname) => {
+      let currentage = 2023 - bormdate;
+      let retirement = 65 - currentage;
+      return `${firstname} will be retire after ${retirement} years`;
+    };
+
+    let retirementvalid = retirementfun(1994, "Shubham");
+    let retirementvalid2 = retirementfun(1992, "Amit");
+
+    let bothret = retirementvalid + " , " + retirementvalid2;
+
+    document.getElementById("para2").innerHTML = bothret;
+
+    // const addno=(a,b)=>a+b;
+    // console.log(addno(5,8))
+
+    const nomul = function (num) {
+      return num * 4 - num;
+    };
+    const addno = function (a, b) {
+      const noAmul = nomul(a);
+      const noBmul = nomul(b);
+      return noAmul + noBmul;
+    };
+    console.log(addno(5, 2));
+
+    let num1 = [10, 2, 4];
+
+    let nolenght = num1.length;
+
+    const average = (a, b, c, num) => {
+      let averageOfNo = (a + b + c) / num;
+      let num1v = checkno(a);
+      let num2v = checkno(b);
+      let num3v = checkno(c);
+      averageOfNo = (num1v + num2v + num3v) / num;
+      return averageOfNo;
+    };
+    const checkno = (graterno) => {
+      return graterno * 2;
+    };
+    console.log(average(num1[0], num1[1], num1[2], nolenght));
+
+    const currentAge = function (yaer) {
+      const currentyear = 2023;
+      return currentyear - yaer;
+    };
+    const retirementper = function (birth, personName) {
+      const age = currentAge(birth);
+      const reitreyaer = 65 - age;
+      return reitreyaer;
+    };
+
+    console.log(retirementper(1994, "Shubham Bhai"));
+
+    //ARRAY
+
+    const friends = new Array("Amit", "Mohit", "Anshu", "Ris", "Anu");
+
+    let AnshuInclude = friends.includes("radha");
+    let pushVar = friends.push("deno");
+    console.log(AnshuInclude);
+    console.log(friends);
+    if (friends.includes("Amit")) {
+      console.log(`My frnd  is here`);
+    } else {
+      console.log("My frnd  is not here");
+    }
+
+    let unshiftvar = friends.shift();
+    console.log(unshiftvar);
+
+    console.log(friends[friends.length - 1]);
+    console.log(friends);
+    let name = "";
+    for (i = 0; i < friends.length; i++) {
+      name += friends[i] + ",";
+    }
+    console.log(name);
+
+    function calculateAge(birthyear) {
+      return 2023 - birthyear;
+    }
+    let birthYaerArray = new Array(1991, 2007, 1994, 1995);
+
+    // let birth;
+    // for(i=0;i<birthYaerArray.length;i++){
+    //   birth=birthYaerArray[i]
+    // }
+    console.log(
+      calculateAge(birthYaerArray[0]),
+      calculateAge(birthYaerArray[1]),
+      calculateAge(birthYaerArray[2])
+    );
+
+    //ARRAY-End
+
+    //objects
+    let personDetail = {
+      FirstName: "Shubham",
+      LastName: "Chaturvedi",
+      birthyear: 1991,
+      Friends: ["Manish", "Rahul", "Amit"],
+      profession: "Software Dev",
+      calculateAge: function () {
+        this.age = 2023 - this.birthyear;
+        return this.age;
+      },
+      isLic: true,
+      summary: function () {
+        return `${this["FirstName"]} is a ${this.age}-year and he is ${
+          this.profession
+        } and is ${this.isLic ? "Valid Lic" : "No valid DL"}`;
+      },
+
+      //  licvalid:function(){
+      //      if(this.isLic){
+      //       return  'Is valid Liciencse'
+      //      }else{
+      //       return 'No Valid Lic'
+      //      }
+      //  }
+    };
+    personDetail.calculateAge();
+    console.log(personDetail.summary());
+
+    // console.log(`${personDetail['FirstName']} is a ${personDetail.age}-year and he is ${personDetail.licvalid()}`)
+
+    console.log(personDetail);
+    // console.log(personDetail.Age)
+
+    const namekey = "Name";
+
+    console.log(
+      personDetail["First" + namekey],
+      personDetail["Last" + namekey]
+    );
+
+    const PromtChose = prompt(
+      "Please Select Any thing which you want to select from personal detail"
+    );
+
+    // console.log(personDetail[PromtChose]);
+
+    if (personDetail[PromtChose]) {
+      console.log(personDetail[PromtChose]);
+    } else {
+      alert("This is not define into person Detail Object");
+    }
+
+    console.log(
+      `${personDetail["FirstName"]} has ${personDetail.Friends.length} friend and best friend is ${personDetail.Friends[2]}`
+    );
+
+    console.log(personDetail);
+    console.log(
+      personDetail.FirstName +
+        " " +
+        personDetail.LastName +
+        " " +
+        personDetail.Friends.FriendOne +
+        " " +
+        personDetail.birthyear
+    );
+
+    console.log(personDetail["birthyear"]);
+
+    //objects-End
+    const jonas = [
+      "Jonas",
+      "Schmedtmann",
+      2037 - 1991,
+      "teacher",
+      ["Michael", "Peter", "Steven"],
+      true,
+    ];
+    let type = [];
+
+    for (let i = 0; i <= jonas.length - 1; i++) {
+      console.log(jonas[i], typeof jonas[i]);
+      type[i] = typeof jonas[i];
+      // type.push(typeof(jonas[i]))      // can create by push or unshift method
+    }
+    console.log(type);
+    // for Loop Is array
+    let age = [1991, 1993, 1994, 1999, 2000];
+    // let Name=['Suresh','Mahesh','Sunil','sanjay','Sahil']
+    let currentAgeval = [];
+
+    for (i = 0; i < age.length; i++) {
+      currentAgeval.push(2023 - age[i]);
+    }
+
+    console.log(currentAgeval);
+
+    //Continue and break statement in Array;
+
+    const jonas2 = [
+      "Jonas",
+      "Schmedtmann",
+      2037 - 1991,
+      "teacher",
+      ["Michael", "Peter", "Steven"],
+    ];
+    console.log(
+      "======if condition is true then code is not execute for this irratation, it execute only for false condition ==========="
+    );
+    for (let i = 0; i < jonas2.length; i++) {
+      if (typeof jonas[i] !== "string") continue;
+      console.log(jonas2[i]);
+    }
+    console.log(
+      "======after find Number the loop will be exit  permanent , Not go for next irratation==========="
+    );
+
+    for (let i = 0; i < jonas2.length; i++) {
+      if (typeof jonas[i] === "number") break;
+      console.log(jonas2[i]);
+    }
+
+    //Array Reverse Loop or for reverse loop
+
+    // for(i=jonas2.length-1;i>=0;i--){
+    //   jonas2[i];
+    //   console.log(i,jonas2[i])
+    // }
+
+    //loop inside Loop
+    for (myexc = 1; myexc < 4; myexc++) {
+      console.log(`I am Doing Excercise:${myexc}`);
+      for (exctime = 2; exctime < 7; exctime++) {
+        console.log(`My excercise  time is Excercise:${exctime}`);
+      }
+    }
+
+    // while Loop
+    let rep = 0;
+    while (rep < 10) {
+      console.log(`While: I am Doing Excercise:${rep}`);
+      rep++;
+    }
+
+    let disc = Math.trunc(Math.random() * 6) + 1;
+
+    while (disc !== 6) {
+      console.log(`Please roll Disc no Is ${disc}`);
+      if (disc === 6) {
+        console.log(`No Need to roll Disc no Is ${disc}`);
+      }
+    }
+  </script>
+</html>

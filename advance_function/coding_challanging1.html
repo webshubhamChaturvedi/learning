@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button>Take Poll</button>
+    <h1>abc</h1>
+  </body>
+</html>
+<script>
+  "use strict";
+  let propmtval;
+  const poll = {
+    Question: "What is your favourite programming language?",
+    Options: ["0:Javascript", "1: Python", "2: Rust", "3:C++"],
+    answers: new Array(4).fill(0),
+
+    registerNewAnswer() {
+      propmtval = Number(
+        prompt(
+          `${this.Question}\n ${this.Options.join("\n")} \n (write option no)`
+        )
+      );
+      typeof propmtval === "number" &&
+        propmtval < poll.Options.length &&
+        this.answers[propmtval]++;
+      //   console.log(this.answers);
+      this.displayResults();
+      this.displayResults("string");
+    },
+    displayResults(type = "array") {
+      if (type === "array") {
+        console.log(this.answers);
+      } else if (type === "string") {
+        console.log(`the string is ${this.answers.join(", ")}`);
+      }
+    },
+  };
+  poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+
+  document
+    .querySelector("button")
+    .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+  //======================coding Challange 2
+
+  (function () {
+    const header = document.querySelector("h1");
+    header.style.color = "red";
+    const bodyclick = document.querySelector("body");
+    bodyclick.addEventListener("click", function () {
+      header.style.color = "blue";
+    });
+  })();
+</script>

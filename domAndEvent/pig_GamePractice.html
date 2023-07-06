@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+
+        /* ff 3.6+ */
+        background: -moz-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* safari 5.1+,chrome 10+ */
+        background: -webkit-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* opera 11.10+ */
+        background: -o-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* ie 10+ */
+        background: -ms-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* global 92%+ browsers support */
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+        margin: 0;
+        color: #000;
+        font-size: 1.2rem;
+        padding: 3rem;
+        background-repeat: no-repeat;
+      }
+      .dflex {
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-between;
+      }
+      .piggameMain {
+        max-width: 60%;
+        margin: auto;
+        /* background-color: #e91e6375; */
+        /* padding: 2rem; */
+      }
+      .pigGameOut {
+        display: flex;
+        position: relative;
+      }
+      .pigGameOut .commonblock {
+        width: 50%;
+        background-color: #e91e6375;
+        padding: 2rem;
+      }
+      .pigGameOut .commonblock.active {
+        background-color: #fff176;
+      }
+      .commonblock.active .currentValueBlock {
+        background-color: #fc6666;
+      }
+      .score {
+        font-size: 3rem;
+        color: #fc6666;
+      }
+      .gameblockcontent {
+        text-align: center;
+        min-height: 400px;
+        display: grid;
+      }
+      .gameblockcontent h2 {
+        font-size: 1.5rem;
+      }
+      .currentValueBlock {
+        max-width: 200px;
+        width: 100%;
+        min-height: 100px;
+        border-radius: 1rem;
+        padding: 1.3rem;
+        margin: auto;
+        background-color: #4fc3f7;
+        color: #fff;
+        font-size: 1.4rem;
+      }
+      .currentValue {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #000;
+      }
+      .commonbtn {
+        font-weight: 600;
+        background-color: #fffffffa;
+        border-radius: 0.6rem;
+        padding: 0.6rem 1rem;
+        border: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.9rem;
+        cursor: pointer;
+        min-width: 6rem;
+      }
+      .refreshGame {
+        top: 2rem;
+      }
+      .diceRoll {
+        bottom: 10rem;
+      }
+      .holdbtn {
+        bottom: 6rem;
+      }
+      .diceBlock {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        transform: translateX(-50%);
+        width: 70px;
+      }
+      .diceBlock img {
+        width: 100%;
+      }
+      .winnerPopUp {
+        position: fixed;
+        width: 100%;
+        background: #181919e8;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        display: none;
+      }
+      .winnerPopUp.display {
+        display: block;
+      }
+      .PlayerName {
+        font-size: 3rem;
+        margin-top: 100px;
+        color: #d81b60;
+        text-align: center;
+      }
+      .content .trophy img {
+        display: block;
+        margin: auto;
+        max-width: 128px;
+        filter: drop-shadow(0 0 4px #000);
+        transition: 0.5s;
+        animation: animate 2s linear infinite;
+      }
+
+      @keyframes animate {
+        0% {
+          transform: scale(1);
+        }
+
+        25% {
+          transform: scale(1.1);
+        }
+
+        50% {
+          transform: scale(1);
+        }
+
+        75% {
+          transform: scale(1.2);
+        }
+
+        100% {
+          transform: scale(1.1);
+        }
+      }
+
+      .content .text h1 {
+        font-weight: 900;
+        font-size: 8rem;
+        color: #ffeb3b;
+        text-shadow: 8px 0px 0px #ec407a;
+      }
+      .noabsolut {
+        position: initial;
+      }
+      .winnerPopUp {
+        text-align: center;
+      }
+      .content {
+        position: relative;
+        top: 3rem;
+      }
+      .winner {
+        background-color: #000 !important;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="piggameMain textceneter">
+      <div class="pigGameOut">
+        <div class="winnerPopUp">
+          <div class="content">
+            <div class="trophy">
+              <img src="img/trophy.png" alt="trophy" />
+            </div>
+            <div class="text">
+              <h1 class="PlayerName">Award</h1>
+            </div>
+          </div>
+          <!-- <h1 class="PlayerName"></h1> -->
+          <!-- <button
+            class="commonbtn refreshGame noabsolut"
+            onclick="NewGameFunction()"
+          >
+            Play Again
+          </button> -->
+        </div>
+        <button class="commonbtn refreshGame">🔄 New game</button>
+        <button class="commonbtn diceRoll">🎲 Roll dice</button>
+        <button class="commonbtn holdbtn">📥 Hold</button>
+        <div class="diceBlock">
+          <img src="img/dice-1.png" id="diceBlockImg" class="hidden" />
+        </div>
+
+        <div class="gamelft commonblock active player-0">
+          <div class="gameblockcontent">
+            <div>
+              <h2>Player 1</h2>
+              <div class="score firstplayerscore" id="score-0">0</div>
+            </div>
+            <div class="currentValueBlock">
+              <p>Current</p>
+              <h4
+                class="currentValue playerFirst currentvaluePlayer-0"
+                id="currentvaluePlayer-0"
+              >
+                0
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="gameright commonblock player-1">
+          <div class="gameblockcontent">
+            <div>
+              <h2>Player 2</h2>
+              <div class="score secondplayerscore" id="score-1">0</div>
+            </div>
+            <div class="currentValueBlock">
+              <p>Current</p>
+              <h4
+                class="currentValue playerSecond currentvaluePlayer-1"
+                id="currentvaluePlayer-1"
+              >
+                0
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    "use strict";
+    let diceRoll = document.querySelector(".diceRoll");
+    let currentValue = 0;
+    let activePlayer = 0;
+    let diceImg = document.querySelector("#diceBlockImg");
+    let playerEl0 = document.querySelector(".gamelft");
+    let playerEl1 = document.querySelector(".gameright");
+    let holdBtn = document.querySelector(".holdbtn");
+    let score = [0, 0];
+    let currentScoreEl0 = document.querySelector(".currentvaluePlayer-0");
+    let currentScoreEl1 = document.querySelector(".currentvaluePlayer-1");
+    let playing = true;
+    let NewGame = document.querySelector(".refreshGame");
+    let scoreEl0 = document.getElementById("score-0");
+    let scoreEl1 = document.getElementById("score-1");
+
+    // switch player
+    let switchPlayer = function () {
+      currentValue = 0;
+      activePlayer = activePlayer === 1 ? 0 : 1;
+      playerEl0.classList.toggle("active");
+      playerEl1.classList.toggle("active");
+      currentScoreEl0.textContent = 0;
+      currentScoreEl1.textContent = 0;
+      document.getElementById(
+        `currentvaluePlayer-${activePlayer}`
+      ).textContent = 0;
+    };
+
+    diceRoll.addEventListener("click", function () {
+      if (playing) {
+        let randomDice = Number(Math.trunc(Math.random() * 6) + 1);
+        diceImg.src = `img/dice-${randomDice}.png`;
+        diceImg.classList.remove("hidden");
+
+        if (randomDice !== 1) {
+          currentValue += randomDice;
+          document.querySelector(
+            `.currentvaluePlayer-${activePlayer}`
+          ).textContent = currentValue;
+        } else {
+          switchPlayer();
+        }
+      }
+    });
+
+    holdBtn.addEventListener("click", function () {
+      if (playing) {
+        score[activePlayer] += currentValue;
+        document.querySelector(`#score-${activePlayer}`).textContent =
+          score[activePlayer];
+        if (score[activePlayer] >= 20) {
+          playing = false;
+          document
+            .querySelector(`.player-${activePlayer}`)
+            .classList.add("winner");
+          document
+            .querySelector(`.player-${activePlayer}`)
+            .classList.remove("active");
+          diceImg.style.display = "none";
+        } else {
+          switchPlayer();
+        }
+      }
+    });
+    NewGame.addEventListener("click", function () {
+      playing = true;
+      currentValue = 0;
+      score[0] = 0;
+      score[1] = 0;
+
+      document.getElementById("score-0").textContent = 0;
+      document.getElementById("score-1").textContent = 0;
+      document.getElementById(
+        `currentvaluePlayer-${activePlayer}`
+      ).textContent = 0;
+      document
+        .querySelector(`.player-${activePlayer}`)
+        .classList.remove("winner");
+      diceImg.style.display = "block";
+      playerEl0.classList.add("active");
+      playerEl1.classList.remove("active");
+      score[activePlayer];
+      scoreEl0.textContent = 0;
+      scoreEl1.textContent = 0;
+      activePlayer = 0;
+    });
+  </script>
+</html>

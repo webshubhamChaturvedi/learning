@@ -1,0 +1,33 @@
+<script>
+let bills= [22, 295, 176, 440, 37, 105, 10, 1100, 86,52]
+let tips=[]
+let total=[];
+let calcTip=(value)=>(value>=50 && value<=300)? (value *15)/100: (value *20)/100;
+
+for (i=0;i<bills.length;i++){
+  let tip=calcTip(bills[i])
+  tips.push(tip)
+  total.push(bills[i]+tip);
+  // calcAverage(bills[i]);
+}
+
+let calcAverage= function(arr){
+  let sum=0;
+    for (i=0;i<arr.length;i++){
+    sum+=arr[i]
+   }  
+   return sum/arr.length;
+
+}
+
+
+
+
+console.log(bills)
+console.log(tips)
+console.log(total)
+console.log(calcAverage(total))
+
+
+
+</script>

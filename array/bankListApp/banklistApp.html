@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bankist App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <p class="welcome">Log in to get started</p>
+      <img src="logo22.png" alt="Logo" class="logo" />
+      <div class="login">
+        <input
+          type="text"
+          placeholder="user"
+          class="login__input login__input--user"
+          value=""
+        />
+        <!-- In practice, use type="password" -->
+        <input
+          type="password"
+          placeholder="PIN"
+          maxlength="4"
+          class="login__input login__input--pin"
+          value=""
+        />
+        <button class="login__btn">&rarr;</button>
+      </div>
+    </nav>
+    <main class="mainApp">
+      <div class="logoutTimer"></div>
+      <div class="balance">
+        <div>
+          <p class="balance__label">Current balance</p>
+          <p class="balance__date">
+            As of <span class="date">05/03/2037</span>
+          </p>
+        </div>
+        <p class="balance__value">0000 <span>€</span></p>
+      </div>
+      <div class="ContainerSec">
+        <div class="transcationContainer">
+          <div class="common_row">
+            <label class="type_label"></label>
+            <label class="time_label"></label>
+            <div class="money">4 000€</div>
+          </div>
+        </div>
+        <!-- OPERATION: TRANSFERS -->
+
+        <div class="summary">
+          <p class="summary__label">In</p>
+          <div class="summer_in"></div>
+          <p class="summary__label">OUT</p>
+          <div class="summer_out"></div>
+          <p class="summary__label">Interest</p>
+          <div class="summer_intrest">0000€</div>
+          <button class="btn--sort">↓ SORT</button>
+        </div>
+        <div class="operation operation--transfer">
+          <h2>Transfer money</h2>
+          <form class="form form--transfer">
+            <input type="text" class="form__input form__input--to" />
+            <input type="number" class="form__input form__input--amount" />
+            <button class="form__btn form__btn--transfer">&rarr;</button>
+            <label class="form__label">Transfer to</label>
+            <label class="form__label">Amount</label>
+          </form>
+        </div>
+        <div class="operation operation--loan">
+          <h2>Request loan</h2>
+          <form class="form form--loan">
+            <input type="number" class="form__input form__input--loan-amount" />
+            <button class="form__btn form__btn--loan">→</button>
+            <label class="form__label form__label--loan">Amount</label>
+          </form>
+        </div>
+        <div class="operation operation--close">
+          <h2>Close account</h2>
+          <form class="form form--close">
+            <input type="text" class="form__input form__input--user" />
+            <input
+              type="password"
+              maxlength="6"
+              class="form__input form__input--pin"
+            />
+            <button class="form__btn form__btn--close">→</button>
+            <label class="form__label">Confirm user</label>
+            <label class="form__label">Confirm PIN</label>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>

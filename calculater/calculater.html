@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0px;
+        padding: 2rem;
+        font-family: sans-serif;
+        font-size: 1.2rem;
+      }
+      .calculaterbox {
+        background-color: rgba(0, 0, 0, 0.081);
+        max-width: 30%;
+        width: 100%;
+        padding-top: 20px;
+        margin: 0rem auto;
+        padding: 0rem 0rem 0rem;
+        border-radius: 1rem;
+        padding-top: 1.6rem;
+      }
+      .mainNumberBlock {
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .commonroundBlock {
+        width: 24%;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .commonroundBlock label {
+        width: 70px;
+        height: 70px;
+        display: inline-block;
+        background: #f25f5f;
+        border-radius: 10rem;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      .inputblock {
+        border: 0px;
+        height: 44px;
+        width: 100%;
+        background-color: transparent;
+        padding: 1rem;
+      }
+      .inputblock:focus {
+        border: 0px;
+        box-shadow: none;
+        outline: 0;
+      }
+      .mainNumberBlock {
+        border-top: 1px solid #c9c6c6;
+      }
+      #inputValue {
+        background: #eaeaea;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        font-size: 20px;
+        padding: 1.2rem 1rem;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+      }
+      .calcvaluetop {
+        text-align: left;
+        padding: 20px 15px 0px;
+        font-size: 30px;
+        position: absolute;
+        top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculaterbox">
+      <div class="calcvaluetop" id="calculateValue"></div>
+      <div id="inputValue"></div>
+      <div class="mainNumberBlock">
+        <div class="commonroundBlock"><label id="clear"> AC</label></div>
+        <div class="commonroundBlock"><label id="delete"> DEL</label></div>
+        <div class="commonroundBlock">
+          <label onclick="calcNoVal('%')"> %</label>
+        </div>
+        <div class="commonroundBlock">
+          <label onclick="calcNoVal('/')"> /</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueNine" onclick="calcNoVal(9)"> 9</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueEight" onclick="calcNoVal(8)"> 8</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueSeven" onclick="calcNoVal(7)"> 7</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueSix" onclick="calcNoVal(6)"> 6</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueFive" onclick="calcNoVal(5)"> 5</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valuefour" onclick="calcNoVal(4)"> 4</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueThree" onclick="calcNoVal(3)"> 3</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueTwo" onclick="calcNoVal(2)"> 2</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueOne" onclick="calcNoVal(1)"> 1</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueZero" onclick="calcNoVal(0)"> 0</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="valueDouble" onclick="calcNoVal('00')"> 00</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="point" onclick="calcNoVal('.')"> .</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="add" onclick="calcNoVal('+')"> +</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="minus" onclick="calcNoVal('-')"> -</label>
+        </div>
+        <div class="commonroundBlock">
+          <label id="multiple" onclick="calcNoVal('*')"> *</label>
+        </div>
+        <div class="commonroundBlock"><label id="calculate"> =</label></div>
+      </div>
+    </div>
+  </body>
+  <script src="calculate.js"></script>
+</html>

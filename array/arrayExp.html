@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .row {
+        display: flex;
+      }
+      .col-md-4 {
+        width: 33%;
+        margin: 0 10px;
+      }
+
+      .commonPannel {
+        box-shadow: 0 0 10px #eee;
+        padding: 20px;
+        border-radius: 20px;
+        margin: 2rem 0px;
+      }
+      .listBlock {
+        max-width: 400px;
+        padding: 20px;
+        box-shadow: 0 0 10px #ddd;
+        border-radius: 10px;
+        margin: 20px auto;
+      }
+      .common_row {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+        font-family: monospace;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .common_row span {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        text-align: center;
+      }
+      .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+      thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+      }
+      tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+      }
+      tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+        text-align: left;
+      }
+      .table > tbody > tr > td,
+      .table > tbody > tr > th,
+      .table > tfoot > tr > td,
+      .table > tfoot > tr > th,
+      .table > thead > tr > td,
+      .table > thead > tr > th {
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+      }
+      .table > thead > tr > th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="apiResponse"></div>
+
+    <div class="listBlock"></div>
+    <div class="listBlock2"></div>
+    <div class="row pannelData"></div>
+
+    <button class="btn">Delete Row</button>
+    <table class="table userdetail">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+
+          <th>Name</th>
+          <th>User Name</th>
+          <th>Ammount</th>
+          <th>Intrset</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+
+  <script>
+    "use strict";
+    const movements = [200, 450, -400, 3000, -650, -130, 70];
+
+    for (const [i, movement] of movements.entries()) {
+      if (movement > 0) {
+        console.log(`Movement ${i + 1}: ${movement} Deposite in acc.`);
+      } else {
+        console.log(
+          `Movement ${i + 1}:  ${Math.abs(movement)} Withdraw from acc.`
+        );
+      }
+    }
+    console.warn("forEach Loop");
+    movements.forEach(function (movement, index, array) {
+      if (movement > 0) {
+        console.log(
+          `Movement ${index + 1}: ${movement} ${array} Deposite in acc.`
+        );
+      } else {
+        console.log(
+          `Movement ${index + 1}:  ${Math.abs(movement)} Withdraw from acc.`
+        );
+      }
+    });
+
+    let Maparray = [3, 4, 2, 1, 5];
+
+    let newMaparray = Maparray.map((elm, i) => {
+      let abc = `${elm * 2} and ${i}`;
+      return abc;
+    });
+
+    let filterArray = Maparray.filter((elm) => {
+      let result = elm > 2;
+      return result;
+    });
+
+    console.log(filterArray, newMaparray);
+
+    const array1 = [1, 2, 3, 4];
+
+    // 0 + 1 + 2 + 3 + 4
+    const sumWithInitial = array1.reduce((acc, cv) => acc + cv);
+
+    console.log(sumWithInitial);
+    // Expected output: 10
+
+    let x = new Array(7);
+    // console.log(x.map(() => 5));
+    // console.log(x.fill(2));
+
+    let y = Array.from({ length: 5 }, () => 2);
+    // console.log(y);
+
+    let randomDiceRoll = Array.from({ length: 100 }, (_, i) =>
+      Math.trunc(Math.random(i * 100 + 1))
+    );
+    // console.log(randomDiceRoll);
+    //fetch data from api
+    // let ApiData = fetch("http://localhost:1337/api/names")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     let newdata = data.data;
+    //     let output = newdata.forEach((arr) => {
+    //       let list = arr.attributes.name;
+    //       let quantity = arr.attributes.quantity;
+
+    //       //assign data to list
+    //       const html = ` <div class="common_row">
+    //            ${list.toUpperCase()} <span>${quantity}</span>
+
+    //   </div>`;
+    //       document
+    //         .querySelector(".listBlock")
+    //         .insertAdjacentHTML("beforeend", html);
+    //     });
+    //   });
+    // let getAccountApi = fetch("http://localhost:1337/api/accounts")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     let userData = data;
+    //     // console.log(data.attributes);
+    //     let allAccount = [];
+    //     let owner = userData.forEach((arr) => {
+    //       allAccount.push(arr);
+    //     });
+    //     for (let acc of allAccount) {
+    //       let UserDetail = `<tr>
+    //             <td class-"name">${acc.owner} </td>
+    //             <td>${acc.username}</td>
+    //             <td>${acc.pin}</td>
+    //             <td>${acc.intrest}</td>
+    //         </tr>`;
+    //       document
+    //         .querySelector(".userdetail tbody")
+    //         .insertAdjacentHTML("beforeend", UserDetail);
+    //     }
+    //   });
+    async function logJSONData() {
+      const response = await fetch("http://localhost:1337/api/names");
+      const jsonData = await response.json();
+      let html = jsonData.data.map((arr) => {
+        const html = ` <div class="common_row">
+              ${arr.attributes.name.toUpperCase()} <span>${
+          arr.attributes.quantity
+        }</span>
+
+       </div>`;
+        document
+          .querySelector(".listBlock")
+          .insertAdjacentHTML("beforeend", html);
+      });
+    }
+    logJSONData();
+
+    async function getAccountApi() {
+      const response = await fetch("http://localhost:1337/api/accounts");
+      const jsonData = await response.json();
+
+      console.log(jsonData.data);
+      let html = jsonData.data.map((arr, i) => {
+        let UserDetail = `<tr>
+          <td class-"name">${i + 1} </td>
+               <td class-"name">${arr.attributes.owner} </td>
+               <td>${arr.attributes.username}</td>
+               <td>${arr.attributes.pin}</td>
+               <td>${arr.attributes.intrest}</td>
+               <td>${arr.attributes.updatedAt
+                 .slice(0, 10)
+                 .split(" ")
+                 .reverse()
+                 .join(" ")}
+           </tr>`;
+        document
+          .querySelector(".userdetail tbody")
+          .insertAdjacentHTML("beforeend", UserDetail);
+      });
+      let allRow = document.querySelectorAll(".userdetail tr");
+
+      [...allRow].forEach((arr, i) => {
+        if (i < 1) {
+          arr.style.backgroundColor = "lightblue";
+        }
+      });
+    }
+    getAccountApi();
+    document.querySelector(".btn").addEventListener("click", function () {
+      document.querySelector(".userdetail tbody").deleteRow(0);
+    });
+
+    async function indexApi() {
+      const response = await fetch(
+        "http://35.90.149.178:1337/api/page?[populate][0]=hero_section.image&populate[1]=buttons.&populate[2]=award.image&populate[3]=our_clients.image&populate[4]=why_choose&populate[5]=why_choose_content.image&populate[6]=service_offering.image&populate[7]=service_offering_fields.icon_image&populate[8]=sharad_patney.image&populate[9]=success_story_blogs.image&populate[10]=success_story_content.image&populate[11]=testimonial&populate[12]=testimonial_content.image&populate[13]=home_blogs&populate[14]=home_blog_content.image&populate[15]=teach_stacks_header&populate[16]=tech_stacks.tech_stacks_content&populate[17]=tech_stacks.tech_language.icon&populate[18]=hero_section.banner_btn.icon"
+      );
+      const jsondata = await response.json();
+      const arrLoop = jsondata.data.attributes.buttons;
+      const homeBlockVar = jsondata.data.attributes.home_blog_content;
+      console.log(jsondata);
+
+      let buttonShow = arrLoop.map((arr, i) => {
+        let html = `<button>${arr.label}</button>`;
+        document
+          .querySelector(".listBlock2")
+          .insertAdjacentHTML("beforeend", html);
+      });
+      let homeBlogContent = homeBlockVar.map((arr) => {
+        let content = `<div class="col-md-4">
+              <div class="commonPannel">
+                  <h3> ${arr.h}</h3>
+                  <p> ${arr.p}</p>
+                  <div class="time"><label>${arr.time}</label><label>${arr.date}</label></div>
+                  <div class="aurthorname">${arr.author_name}</div>
+                </div>
+           </div>`;
+        document
+          .querySelector(".pannelData")
+          .insertAdjacentHTML("beforeend", content);
+      });
+      // document.getElementById("apiResponse").innerHTML =
+      //   JSON.stringify(jsondata);
+    }
+    // console.log(newdata);
+    indexApi();
+    console.log("ww");
+  </script>
+</html>

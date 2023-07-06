@@ -1,0 +1,36 @@
+<!DOCTYPE >
+
+<html>
+  <head></head>
+  <body></body>
+  <script>
+    let bill = [125, 555, 44];
+
+    let calcTip = (value) =>
+      50 <= value && value <= 300 ? value * (15 / 100) : (value * 20) / 100;
+
+    let tip1 = calcTip(bill[0]);
+    let tip2 = calcTip(bill[1]);
+    let tip3 = calcTip(bill[2]);
+
+    console.log(tip1, tip2, tip3);
+
+    let totalMoney = [tip1 + bill[0], tip2 + bill[1], tip3 + bill[2]];
+    console.log(totalMoney);
+  </script>
+
+  <script>
+    //by Using for loop standard method
+    let bill2 = [125, 555, 44];
+    let tip = [];
+    let totalMoney2 = [];
+
+    for (let i = 0; i < bill.length; i++) {
+      calcTip = (value) =>
+        50 <= value && value <= 300 ? value * (15 / 100) : (value * 20) / 100;
+      tip.push(calcTip(bill2[i]));
+      totalMoney2 = bill2[i] + tip[i];
+      console.log(totalMoney2, typeof totalMoney2);
+    }
+  </script>
+</html>

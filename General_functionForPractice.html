@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .block {
+        width: 100%;
+        /* border: 1px solid #000; */
+
+        transition: 2s all ease;
+        min-height: 300px;
+        padding: 2rem;
+        margin: 2rem 0;
+        position: relative;
+      }
+      .dummy {
+        min-height: 400px;
+      }
+      .block1 {
+        transition: 2s all ease;
+        z-index: 1;
+        background-color: brown;
+      }
+      .block2 {
+        transition: 2s all ease;
+        z-index: 99;
+        background-color: bisque;
+      }
+      .block3 {
+        transition: 2s all ease;
+        z-index: 999;
+        background-color: aqua;
+      }
+      /* .comon1 {
+        top: 250px;
+        background-color: aqua;
+      }
+      .comon2 {
+        top: 300px;
+        background-color: bisque;
+      }
+      .comon3 {
+        background-color: brown;
+        top: 350px;
+      } */
+      .commonBlock {
+        /* position: sticky; */
+        padding: 2rem 0;
+        min-height: 300px;
+        transition: 0.5s all ease;
+        margin: 2rem 0px;
+      }
+      .block1.fixed {
+        position: sticky;
+        top: 220px;
+      }
+      .block2.fixed {
+        position: sticky;
+        top: 300px;
+      }
+
+      .block3.fixed {
+        position: sticky;
+        top: 380px;
+      }
+      .mainBlock {
+        position: relative;
+      }
+      .block1.fixedaded,
+      .block2.fixedaded,
+      .block3.fixedaded {
+        position: absolute;
+      }
+
+      .block1.fixedaded {
+        top: 220px;
+      }
+      .block2.fixedaded {
+        top: 300px;
+      }
+      .block3.fixedaded {
+        top: 380px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <button>red</button>
+      <button>blue</button>
+      <button>green</button>
+      <select>
+        <option selected>select Option</option>
+        <option>red</option>
+        <option>blue</option>
+        <option>green</option>
+      </select>
+
+      <div>
+        <div class="dummy"></div>
+      </div>
+
+      <div class="mainBlock">
+        <div class="block block1"><h1>Block 1</h1></div>
+        <!-- <div class="commonBlock comon1">
+        </div> -->
+        <div class="block block2"><h1>Block 2</h1></div>
+        <!-- <div class="commonBlock comon2">
+        </div> -->
+        <div class="block block3"><h1>Block 3</h1></div>
+        <!-- <div class="commonBlock comon3">
+        </div> -->
+      </div>
+      <!-- <div class="block"></div>
+      <div class="block"></div>
+
+      <div class="block"></div>
+
+      <div class="block"></div>
+
+      <div class="block"></div>
+      <div class="block"></div> -->
+
+      <div class="dummy"></div>
+
+      <div class="dummy"></div>
+
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+      <div class="dummy"></div>
+    </section>
+  </body>
+  <script>
+    "use strict";
+
+    let mainBlock = document.querySelector(".mainBlock");
+
+    let allheight = document.querySelector(".block");
+    document.querySelector("body").scrollIntoView({
+      behavior: "smooth",
+    });
+    window.addEventListener("scroll", function (event) {
+      let mainblockH = mainBlock.clientHeight;
+      let windowheight = window.scrollY;
+      //   let blockfullHeight = mainBlock.clientHeight;
+      //   let mainBlockPos = mainBlock.offsetTop;
+      let block1pos = document.querySelector(".block1").offsetTop;
+      let block2pos = document.querySelector(".block2").offsetTop;
+      let block3pos = document.querySelector(".block3").offsetTop;
+      console.log(windowheight, block1pos);
+
+      //   let finalop = mainBlockPos - windowheight;
+      //   console.log(block1pos, block2pos, block3pos, windowheight);
+      //   let output;
+
+      if (windowheight >= block1pos - 200) {
+        document.querySelector(".block1").classList.add("fixed");
+      }
+      if (windowheight >= block2pos - 200) {
+        document.querySelector(".block2").classList.add("fixed");
+        // mainblockH -= 300;
+      }
+
+      if (windowheight >= block3pos - 200) {
+        document.querySelector(".block3").classList.add("fixed");
+        // mainblockH -= 300;
+        // mainBlock.classList.add("fixed");
+      }
+      if (windowheight >= block3pos - 100) {
+        document.querySelector(".block1").classList.add("fixedaded");
+        document.querySelector(".block2").classList.add("fixedaded");
+        document.querySelector(".block3").classList.add("fixedaded");
+        mainBlock.classList.add("fixed");
+      }
+      if (windowheight <= block1pos - 200) {
+        document.querySelector(".block1").classList.remove("fixed");
+        document.querySelector(".block2").classList.remove("fixed");
+        document.querySelector(".block3").classList.remove("fixed");
+        document.querySelector(".block1").classList.remove("fixedaded");
+        document.querySelector(".block2").classList.remove("fixedaded");
+        document.querySelector(".block3").classList.remove("fixedaded");
+      }
+    });
+
+    // issue-1=== 0-10 evenNO
+    function evenno() {
+      for (let i = 1; i <= 10; i++) {
+        if (i % 2 === 0) {
+          console.log(`even: ${i}`);
+        } else {
+          console.log(i);
+        }
+      }
+    }
+    evenno();
+    //issue-2=== print table
+    // function multiplication() {
+    //   for (let i = 1; i <= 5; i++) {
+    //     console.log(`Table ==============${i}`);
+    //     for (let y = 1; y <= 10; y++) {
+    //       console.log(`${i}*${y}=${i * y}`);
+    //     }
+    //   }
+    // }
+    // multiplication(); //print table
+
+    //issue-3===   arr of addition
+
+    let addArr = [-5, 2, 3, 4, 5, 6.2];
+    let sum = 0;
+
+    let addarrayfunc = () => {
+      for (let i = 0; i < addArr.length; i++) {
+        sum += addArr[i];
+      }
+      console.log(sum);
+    };
+    addarrayfunc();
+
+    //issue-4=== create function to reverse array;
+    let reverseArrayNo = [4, 6, 7, 8, 9, 2, 3];
+    let reversedArray = [];
+
+    let newarr = reverseArrayNo.slice(1, 5).reverse(); //reverse an array on new array by using slice method
+
+    console.log(newarr, reverseArrayNo);
+    let revesreArray = function () {
+      for (let i = reverseArrayNo.length - 1; i >= 0; i--) {
+        reversedArray.push(String(reverseArrayNo[i]));
+      }
+      console.log(reversedArray);
+    };
+    revesreArray();
+
+    //issue-4===  create a function to find largest no into arr (only for postive no)
+
+    let largetNumber = function (arr) {
+      let largest = 0;
+      for (let lar of arr) {
+        if (largest < lar) {
+          largest = lar;
+        }
+      }
+      console.log(largest);
+    };
+
+    largetNumber(reverseArrayNo);
+    let allBtn = document.querySelectorAll("button");
+
+    let btnclickFunc = function (arr) {
+      //   for (let abc of arr) {
+      //     abc.addEventListener("click", (e) => {
+      //       console.log(e.target);
+      //     });
+      //   }
+
+      arr.forEach((element) => {
+        element.addEventListener("click", (e) => {
+          //   console.log(e.target);
+          e.target.style.display = "none";
+        });
+      });
+    };
+    btnclickFunc(allBtn);
+
+    // allBtn.addEventListener("click", (e) => {
+    //   console.log(e);
+    // });
+
+    let selectcolor = document.querySelector("select");
+    selectcolor.addEventListener("change", function (e) {
+      document.querySelector(
+        "body"
+      ).style.backgroundColor = `${e.target.value}`;
+      //   e.target.value = "";
+    });
+
+    // let allbtn = document.querySelectorAll("button");
+    // [...allbtn].forEach((arr, i) => {
+    //   arr.addEventListener("click", function (e) {
+    //     document.querySelector(
+    //       "body"
+    //     ).style.backgroundColor = `${e.target.innerHTML}`;
+    //   });
+    // });
+
+    // console.log([...allbtn]);
+
+    // allbtn.addEventListener("click", function (e) {
+    //   console.log(e.target);
+    // });
+
+    // const arr = ["shubham", "gaurav", "anshu", "amit", "anil", "splt"];
+    // let newarr = arr.map((arr) => arr.match("u"));
+    // let newarr2 = [...newarr];
+    // console.log(newarr2);
+  </script>
+</html>

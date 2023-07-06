@@ -1,0 +1,58 @@
+<body></body>
+<script>
+  "use strict";
+
+  document.body.append(document.createElement("textarea"));
+  document.body.append(document.createElement("button"));
+  document.querySelector("button").textContent = "Click";
+  let getValue = function () {
+    let text = document.querySelector("textarea").value;
+    let splittext = text.split("\n");
+    for (const [key, value] of splittext.entries()) {
+      let spltunderscore = value.split("_");
+      let [firstPart, secondPart] = spltunderscore;
+      firstPart = firstPart.trim().toLowerCase();
+      let secondPartlower = secondPart.trim().toLowerCase();
+
+      let secondPartfinal = secondPartlower.replace(
+        secondPartlower[0],
+        secondPartlower[0].toUpperCase()
+      );
+      console.log(
+        `${(firstPart + secondPartfinal).padEnd(20)}  ${"✅".repeat(key + 1)} `
+      );
+    }
+  };
+  document.querySelector("button").addEventListener("click", getValue);
+
+  // let splitText;
+  // document.body.append(document.createElement("textarea"));
+  // document.body.append(document.createElement("button"));
+  // document.querySelector("button").textContent = "Click Me";
+  // let getvalue = function () {
+  //   let text = document.querySelector("textarea").value;
+  //   splitText = text.split("\n");
+  //   captalize(splitText);
+  // };
+  // document.querySelector("button").addEventListener("click", getvalue);
+
+  // // let listvar = "underscore_case";
+  // // let arrayVar = [
+  // //   "underscore_case",
+  // //   "first_name",
+  // //   "Some_Variable",
+  // //   "calculate_AGE",
+  // //   "delayed_departure",
+  // // ];
+  // let camelcase;
+  // let captalize = function (listvar) {
+  //   for (const [index, a] of listvar.entries()) {
+  //     // console.log(splitTex);
+  //     let [fisrt, second] = a.split("_");
+  //     let firstitem = fisrt.trim().toLowerCase();
+  //     const camelcaseitem = second.replace(second[0], second[0].toUpperCase());
+  //     camelcase = firstitem.concat(camelcaseitem);
+  //     console.log(`${camelcase.padEnd(20)} ${"✅".repeat(index + 1)} `);
+  //   }
+  // };
+</script>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+    .row{display: flex;padding: 40px;justify-content: space-between;}
+      .pannel{background-color:#fff;padding: 20px;border-radius:20px;margin: 20px;width: 50%;box-shadow:0 0 10px #ddd;}
+  .pannel h3{font-size: 30px;margin: 0px 0px 30px;}
+  .pannel h4{font-size: 30px;margin:  30px;}
+
+  .pannel input[type="number"]{border-radius: 10px;height: 30px;width: 100%;margin: 0px 20px;}
+  </style>
+</head>
+<body>
+    <div class="row">
+  <div class="pannel">
+      <h3>Dolphin</h3>
+
+      <div class="row">
+        
+        <input type="number" id="dolScore1" placeholder="Score 1" onkeyup=DolScore1()>
+        <input type="number" id="dolScore2" placeholder="Score 2" onkeyup=DolScore2()>
+        <input type="number" id="dolScore3" placeholder="Score 3" onkeyup=DolScore3()>
+
+          <button id="calculateBmi" onclick=calculatedolAvr()>Calculate</button>
+         
+      </div>
+      <h4>Dal Score: <span id="dalScore" style="color:Red"></span></h4>
+
+  </div>
+  <div class="pannel">
+    <h3>Koalas</h3>
+
+    <div class="row">
+        <input type="number" id="kaoScore1" placeholder="Score 1" onkeyup=KaoScore1()>
+        <input type="number" id="kaoScore2" placeholder="Score 2" onkeyup=KaoScore2()>
+        <input type="number" id="kaoScore3" placeholder="Score 3" onkeyup=KaoScore3()>
+
+          <button id="calculateBmi" onclick=calkaloasavrage()>Calculate</button>
+       
+    </div>
+    <h4>Kao Score: <span id="KaoScore" style="color:Red"></span></h4>
+</div>  
+    </div>
+
+</body>
+</html>
+
+<script>
+// let a=10;
+// let b=7;
+// let c=7;
+
+// let largestno= (a>b&& a>c)?`A is Greater ${a}`:(b>a && b>c)?`B is Greater ${b}`:(c>a && c>b)?`C is Greater ${c}`:'Some No are equal';
+// console.log(largestno)
+
+let kaloasavrage;
+let dolavrage;
+
+let dolscore1=document.getElementById('dolScore1');
+let dolscore2=document.getElementById('dolScore2');
+let dolscore3=document.getElementById('dolScore3');
+let kaoscore1=document.getElementById('kaoScore1');
+let kaoscore2=document.getElementById('kaoScore2');
+let kaoscore3=document.getElementById('kaoScore3');
+let dolscoreival1,dolscoreival2,dolscoreival3,kaoscoreival1,kaoscoreival2,kaoscoreival3;
+
+    function DolScore1(){
+        dolscoreival1=parseInt(dolscore1.value);  
+     }
+    function DolScore2(){
+        dolscoreival2=parseInt(dolscore2.value)  
+     }
+    function DolScore3(){
+        dolscoreival3=parseInt(dolscore3.value)
+    }
+
+    function KaoScore1(){
+        kaoscoreival1=parseInt(kaoscore1.value);  
+     }
+    function KaoScore2(){
+        kaoscoreival2=parseInt(kaoscore2.value)  
+     }
+    function KaoScore3(){
+        kaoscoreival3=parseInt(kaoscore3.value)
+    }
+
+    function calculatedolAvr(){
+        dolavrage =(dolscoreival1+dolscoreival2+dolscoreival3)/3
+       console.log(dolavrage)
+       document.getElementById('dalScore').innerHTML=dolavrage;
+       compareAverage();
+    }
+   
+
+    function calkaloasavrage(){
+        kaloasavrage =(kaoscoreival1+kaoscoreival2+kaoscoreival3)/3
+       console.log(kaloasavrage)
+      
+       document.getElementById('KaoScore').innerHTML=kaloasavrage;
+       compareAverage();
+
+    }
+
+
+function compareAverage(){
+    dolavrage =(dolscoreival1+dolscoreival2+dolscoreival3)/3
+    kaloasavrage =(kaoscoreival1+kaoscoreival2+kaoscoreival3)/3
+ 
+  let winner=(dolavrage>kaloasavrage && dolavrage>=100)?`Dolphins is Winner and its value is ${dolavrage}`:(dolavrage<kaloasavrage && kaloasavrage>=100)?`Koalas is Winner and its value is ${kaloasavrage}`:(dolavrage===kaloasavrage )?`Draw Koalas: ${kaloasavrage} ,  Dolphins: ${dolavrage}`:`NO One win`
+console.log(winner)
+
+}
+// average Score
+
+   function averagescore(val1,val2,val3){
+   return (val1+val2+val3)/3
+   }
+
+
+  let DlhphicAvgscore=averagescore(99,101,102);
+  let KoalasAvgscore=averagescore(101,95,101);
+  console.log(DlhphicAvgscore);
+  console.log(KoalasAvgscore);
+  let winner=(DlhphicAvgscore>KoalasAvgscore && DlhphicAvgscore>100)?`Dolphins is Winner and its value is ${DlhphicAvgscore}`:(DlhphicAvgscore<KoalasAvgscore && KoalasAvgscore>100)?`Koalas is Winner and its value is ${KoalasAvgscore}`:(DlhphicAvgscore===KoalasAvgscore )?`Draw Koalas: ${KoalasAvgscore} ,  Dolphins: ${DlhphicAvgscore}`:`NO One win`
+    
+    
+  
+  console.log(winner);
+
+// average Score-End
+
+
+
+</script>

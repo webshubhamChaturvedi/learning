@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="apiResponse"></div>
+
+    <script>
+      async function indexApi(one) {
+        const response = await fetch(
+          "http://35.90.149.178:1337/api/page?[populate][0]=hero_section.image&populate[1]=buttons.&populate[2]=award.image&populate[3]=our_clients.image&populate[4]=why_choose&populate[5]=why_choose_content.image&populate[6]=service_offering.image&populate[7]=service_offering_fields.icon_image&populate[8]=sharad_patney.image&populate[9]=success_story_blogs.image&populate[10]=success_story_content.image&populate[11]=testimonial&populate[12]=testimonial_content.image&populate[13]=home_blogs&populate[14]=home_blog_content.image&populate[15]=teach_stacks_header&populate[16]=tech_stacks.tech_stacks_content&populate[17]=tech_stacks.tech_language.icon&populate[18]=hero_section.banner_btn.icon"
+        );
+
+        const jsondata = await response.json();
+        console.log(jsondata);
+        document.getElementById("apiResponse").innerHTML = JSON.stringify(one);
+      }
+
+      indexApi();
+    </script>
+  </body>
+</html>

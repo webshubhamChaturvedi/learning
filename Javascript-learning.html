@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: aqua;
+        padding: 20px;
+      }
+      .mainblock {
+        background-color: bisque;
+        padding: 30px;
+      }
+      button {
+        background: red;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <a id="link" href="https://google.com">Google</a> -->
+
+    <div class="mainblock">
+      <span>
+        <!-- <button type="button" id="click"> Click Me</button> -->
+      </span>
+    </div>
+    <input id="enterVal1" type="text" onkeyup="value1fun()" />
+    <input id="enterVal2" type="text" onkeyup="value2fun()" />
+    <button id="add" style="font-size: 50px">+</button>
+    <button id="minus" style="font-size: 50px">-</button>
+    <button id="multiple" style="font-size: 50px">*</button>
+    <button id="divide" style="font-size: 50px">/</button>
+
+    <input id="firstvalue" type="hidden" />
+    <input id="firstvalue2" type="hidden" />
+    <p id="test1"></p>
+    <h1></h1>
+  </body>
+</html>
+
+<script>
+  function mycol() {
+    let x = 3;
+    function col2() {
+      console.log(x);
+    }
+    col2();
+  }
+
+  // let bb=mycol();
+  // bb();
+
+  let x = 1;
+  if (true) {
+    let x = 5;
+
+    console.log(x);
+  }
+  console.log(x);
+
+  a();
+  b();
+  console.log(x);
+  function a() {
+    var x = 10;
+    console.log(x);
+    function c() {
+      console.log(x);
+    }
+    c();
+  }
+  function b() {
+    var x = 90;
+    if (x < 100) {
+      var ab = 90;
+    }
+    console.log(ab);
+  }
+
+  const inpvalue1 = document.getElementById("enterVal1");
+  const inpvalue2 = document.getElementById("enterVal2");
+  let valueinput1;
+  let valueinput2;
+  function value1fun() {
+    valueinput1 = document.getElementById("firstvalue").innerHTML = Number(
+      inpvalue1.value
+    );
+  }
+  function value2fun() {
+    valueinput2 = document.getElementById("firstvalue2").innerHTML = Number(
+      inpvalue2.value
+    );
+  }
+  const addbtn = document.getElementById("add");
+  const minusval = document.getElementById("minus");
+  const multplyval = document.getElementById("multiple");
+  const divideval = document.getElementById("divide");
+
+  addbtn.addEventListener("click", () => {
+    if (valueinput1 == null || valueinput1 == "") {
+      alert("eneter value");
+    } else {
+      const finalval = valueinput1 + valueinput2;
+      document.getElementById("test1").innerHTML = finalval;
+      inpvalue2.value = "";
+      inpvalue1.value = "";
+    }
+  });
+
+  minus.addEventListener("click", () => {
+    const finalminus = valueinput1 - valueinput2;
+    document.getElementById("test1").innerHTML = finalminus;
+  });
+  multplyval.addEventListener("click", () => {
+    document.getElementById("test1").innerHTML = valueinput1 * valueinput2;
+  });
+  divideval.addEventListener("click", () => {
+    document.getElementById("test1").innerHTML = valueinput1 / valueinput2;
+  });
+
+  //   addbtn.addEventListener('click',()=>
+  //   {
+  //    const arrayadd=array2.includes(4)
+  //    alert(arrayadd)
+  // })
+  // btnadd.addEventListener('click',()=>{
+  //   const arrayadd=array1.concat(array2);
+  //   alert(arrayadd)
+  // })
+
+  const btnclick = document.getElementById("click");
+  const spanblock = document.getElementsByTagName("span")[0];
+  const div = document.getElementsByTagName("div")[0];
+  const body = document.getElementsByTagName("body")[0];
+
+  // btnclick.addEventListener('click', (e) => {
+  //   e.stopPropagation()
+  //   alert("button was clicked")
+  // })
+  // spanblock.addEventListener('click',()=>{
+  //  alert('span click')
+
+  // });
+  // div.addEventListener('click',()=>{
+  //  alert('div click')
+
+  // })
+  // body.addEventListener('click',()=>{
+  //  alert('body click')
+
+  // })
+
+  let jsvar = [1, 2, 3, 4, 5, 7];
+  var valueno = (jsvar.length = jsvar.length - 2);
+
+  // alert(valueno);
+
+  // if(jsvar===1){
+  // alert('this is js');
+
+  // }
+  // else{
+  // alert('this is not js');
+
+  // }
+  // let jj=2;
+  // let a=1+"3"*2+2+'4'*3;
+  // console.log(a);
+  // a=3;
+  // // 132+12
+
+  // console.log(a);
+  // if(jj=='2') {
+  //     console.log('my name is khan')
+  //     // alert(jj)
+  // }
+  // else{
+  // console.log('khan is my name')
+  // };
+  // // Ans- if
+
+  // // cond2
+  // if(jj ==='2') {
+  //     console.log('my name is khan')
+  // }
+  // else{
+  //     console.log('khan is my name')
+  // };
+
+  // // Ans- else
+
+  // // cond3
+  // if(jj===2) {
+  //     console.log('my name is khan')
+  // }
+  // else{
+  //     console.log('khan is my name')
+  // };
+
+  //  Data Types
+
+  /*
+  1- number
+  2-String
+  3-Boolan (true or false)
+  4-Undefiend
+  5-Null
+  6-bigint
+  7-symbol
+*/
+
+  // let numberDataType= 23;
+  //    numberDataType=80;
+  // console.log(typeof numberDataType,':',numberDataType);
+  // var numberDataTypeString='26';
+  // console.log(typeof numberDataTypeString,':',numberDataTypeString);
+  // var nuberUndefiend;
+  // console.log(typeof nuberUndefiend,':',nuberUndefiend);
+  // console.log(typeof null);
+
+  // let country="India";
+  // let continent= "Asia";
+  let population = 133;
+
+  // let countryData= ["India","Asia",133];
+  // console.log( "Cuntry:",country, "," ,continent, "," , population);
+  // console.log(countryData);
+  // console.log(countryData[0],",",countryData[1],",",countryData[2]);
+
+  // Data Types
+
+  // let isIsland= true;
+  // let language;
+  // console.log(typeof isIsland);
+  // console.log(typeof language);
+  // console.log(typeof country);
+  // console.log(typeof population);
+  // console.log(typeof continent);
+
+  //Operators
+
+  //Mathmetical operator
+
+  // const nowDate=2028;
+  // const shubhamAge=nowDate-1994;
+  // const annuAge=nowDate-1998;
+  // const firstname= "Shubham";
+  // const lastname= "Chaturvedi";
+
+  // console.log("Shubham Age:", shubhamAge, "Anu Age:",annuAge, 2**4 );
+
+  // console.log("Shubham Age:", shubhamAge*3, "Anu Age:",annuAge/2, 3**5 );
+  // console.log(firstname + " "  + lastname);
+  // console.log(typeof nowDate );
+  // //Assignment oprator
+  // let ab=10;
+  // console.log(ab);
+  //  ab +=20; // ab+20=(10+20)=30
+  // console.log(ab);
+  //  ab-=10; // ab-10= 30-10=20
+  // console.log(ab);
+  //  ab++; // ab+1=20+1=21
+  // console.log(ab);
+  //  ab--;// ab-1=21-1=20
+  // console.log(ab);
+
+  //compare Operator
+
+  // const compareShubhamAnuAge=(shubhamAge>annuAge);
+  // console.log(compareShubhamAnuAge);
+  //  let averageAge=(shubhamAge+annuAge)/2;
+  // console.log('Average Age:',averageAge);
+
+  // Test Chapter 1
+  let mass, height;
+  let BMI = mass / height ** 2;
+  let markMass = 78;
+  let markHeight = 1.69;
+  let johnMass = 92;
+  let johnHeight = 1.95;
+  //test1
+  let markBmi = 78 / (1.69 * 1.69);
+  let johnBmi = 92 / (1.95 * 1.95);
+
+  //test2
+  let markBmiTest2 = 95 / (1.88 * 1.88);
+  let johnBmiTest2 = 85 / (1.76 * 1.76);
+  //test1
+  console.log("Mark BMI:", markBmi, "John BMI:", johnBmi);
+  let markHeigherBmi = markBmi > johnBmi;
+
+  console.log("Heigher BMI:", markHeigherBmi);
+  //test2
+  console.log("Mark BMI:", markBmiTest2, "John BMI:", johnBmiTest2);
+  let markHeigherBmiTest2 = markBmiTest2 > johnBmiTest2;
+  console.log("Heigher BMI Test 2:", markHeigherBmiTest2);
+
+  // template literal (used for joining the larger string)-for template litral we use the data inside the ``
+
+  const NameTemplate = "Shubham Chaturvedi";
+  const job = "Software Engineers";
+  const birthYear = 1994;
+  const nowYear = 2022;
+
+  let myDetail =
+    "I'm " + NameTemplate + " " + (nowYear - birthYear) + " Years old " + job;
+  console.log(myDetail);
+
+  let myDetailLitral = `I'm ${NameTemplate} ${
+    nowYear - birthYear
+  } Years old ${job} `;
+
+  console.log(myDetailLitral);
+
+  // if else condition
+
+  // let age= 18;
+
+  // if(age>=18){
+  //     console.log(`you can take the Licience`)
+  // }else{
+  //     const leftyear= 18- age
+  //     console.log(`You can't take the Liciense you have to wait ${leftyear} year more`)
+  // }
+
+  // const birthCentury= 2000;
+  // if (birthCentury<=2000){
+  //     let century =20;
+  //     console.log(`this is ${century}th Century`)
+  // }else{
+  //     let century =21;
+  //     console.log(`this is ${century}th Century`)
+
+  // };
+
+  //test3 - let const var
+
+  let mylang = "Hindi";
+  mylang = "English";
+  console.log(`english`);
+
+  // check line no 112
+  if (markBmi > johnBmi) {
+    console.log(
+      `Mark's BMI (${markBmi}) is Grater than John's BMI(${johnBmi}).`
+    );
+  } else {
+    console.log(`John BMI is Grater than Mark's BMI (${markBmi}).`);
+  }
+  //Type Conversion
+  let inputValue = "1994";
+  console.log(typeof inputValue);
+  let inputValueToNumber = Number(inputValue); //covert string to Number
+  console.log(typeof inputValueToNumber, inputValueToNumber + 2);
+  console.log(typeof NaN); // it's give result as a no. means NaN is invalid No.
+
+  //Type coerision
+
+  let typeCoresion = "2" + 3 + 4; // output will be 234 bcoz with string the + convert all other as a string
+  let typeCoresion2 = "3" - 1 + 2 + 4; // put will be 3-1+2+4= 8; for - and * and / its work as a opposite and make the staring as a number
+  console.log(typeCoresion2);
+
+  //truthy and false value;
+  //  let price=0;
+  // let nodefine;
+  //  if (price){
+  //     console.log(`value is truthty`)
+  //  }else{
+  //     console.log(`value is false`)
+
+  //  };
+  //  if(nodefine){
+  //     console.log(`no. is define`);
+  //  }else{
+  //     console.log(`no. not define so showing else condition`);
+
+  //  };
+
+  //== and ==== means (strict and loose )
+
+  //  let newAge='18';
+  //  let newAgeNumber= Number(newAge);
+  //  console.log(typeof newAgeNumber, newAgeNumber);
+
+  //  if (newAge=== 18){
+  //     console.log(`this is number ${newAge}`)
+  //  }
+  //  if (newAge== 18){
+  //     console.log(`this is number ${newAge} loose`)
+  //  };
+
+  //  let promtVal=Number(prompt('what is ur fav. no.'));
+
+  //  console.log(promtVal);
+
+  //  if(promtVal===20){
+  //  console.log(`No. is 20`, typeof promtVal );
+
+  //  }else if(promtVal===10){
+  //  console.log('No. is 10', typeof promtVal);
+
+  //  }else{
+  //  console.log('No. is not 20 or 10', typeof promtVal);
+
+  //  };
+
+  // let halfPoplation=population/2;
+  // console.log(`${halfPoplation} Billion`);
+  // let increasedPop=population+1;
+
+  // console.log(`${increasedPop} Billion`)
+
+  // let finlandPop= 6;
+  // if(population>=finlandPop){
+  //     console.log(`My country Population (${population} Million) is grater than finland Population(${finlandPop} Million)`)
+  // }else{
+  //     console.log(`My country Population (${population} Million) is less than finland Population(${finlandPop} Million)`)
+  // }
+  // Largest no amoung three no.
+  // let a,b,c;
+  // a=5,b=7,c=4;
+  // console.log(a,b,c);
+  // if(a>=b && a>=c){
+  //     console.log(`a is largest no ${a}`)
+  // }else if(b>=a && b>=c){
+  //     console.log(`b is largest no ${b}`)
+  // }else{
+  //     console.log(`c is largest no ${c}`)
+
+  // };
+  // Logical Operation
+  // let sarahAge= 19;
+  // let minAgeLicience= 18;
+  // let normalVision= 0.5;
+  // let sarahVision=0.4
+  // if(sarahAge>=minAgeLicience){
+  //     console.log(`sarah has elligible for Driving Licience, her age is ${sarahAge} more than min age = ${sarahAge-minAgeLicience}`)
+  // }
+  // if ((sarahAge>=minAgeLicience) && (normalVision>=sarahVision)){
+  //  console.log(`Sarah is Good in vision and also elligible for Liciensce`)
+
+  // }else{
+  //     console.log('not Elligible')
+  // };
+
+  //   Equality Operators: == vs. ===  test
+  // let numNeighbours= Number(prompt('How many neighbour countries does your country have?'));
+
+  // console.log(numNeighbours);
+  //  if (numNeighbours===1){
+  //   console.log(`Only 1 border!`)
+  //  }
+  // else if (numNeighbours>1){
+  //     console.log(`More than 1 border'`)
+  // }
+  // else{
+  //     console.log(`No borders`)
+  // }
+
+  // let newCountryLang,newCountryPop,island;
+  // newCountryLang='English';
+  // newCountryPop=45;
+  // island= "";
+  // let srahcreteria=50;
+
+  // if(newCountryLang=='English'&& newCountryPop<=50 && !island){
+  //     console.log('Srah Can live here')
+
+  // }else{
+  //     console.log('sarah cant live here')
+  // };
+
+  // if (population<=srahcreteria && newCountryLang==mylang){
+  //     console.log('Srah Can live here')
+  // }else{
+  //     console.log(`Sarah cant live here my contry pop is large(${population-srahcreteria} and ${newCountryLang==mylang})`)
+  // }
+
+  //coding challange 3
+
+  let dolphinTeam, kolas;
+  // let avregaofDolphin=(96+108+89)/3;
+  // let avregaofKolas=(88+91+110)/3;
+  // let avregaofDolphin=(97+112+101)/3;
+  // let avregaofKolas=(109+95+123)/3;
+  let avregaofDolphin = (97 + 112 + 101) / 3;
+  let avregaofKolas = (109 + 95 + 106) / 3;
+  console.log(avregaofDolphin, avregaofKolas);
+  // let dolphinScoreOne=96;
+  // let dolphinScoreTwo=112;
+  // let dolphinScoreThree=101;
+  // let kolasScoreOne=109;
+  // let kolasScoreTwo=95;
+  // let kolasScoreThree=123;
+  if (avregaofDolphin > avregaofKolas && avregaofDolphin >= 100) {
+    console.log(`Dolhpin Is winner score is ${avregaofDolphin - avregaofKolas} 
+and dolphic score is more than 100 i.e ${avregaofDolphin - 100}`);
+  } else if (avregaofDolphin < avregaofKolas && avregaofKolas >= 100) {
+    console.log(`Kolas Is winner score is ${
+      avregaofKolas - avregaofDolphin
+    } and Kolas score is more than 100 i.e 
+${avregaofKolas - 100}`);
+  } else if (
+    avregaofDolphin === avregaofKolas &&
+    avregaofDolphin >= 100 &&
+    avregaofKolas >= 100
+  ) {
+    console.log("both win the trophy");
+  } else {
+    console.log("both are looser");
+  }
+  //  if(avregaofDolphin>avregaofKolas){
+  //     console.log(`Dolphin is winner score is ${avregaofDolphin}`)
+  //  }else if(avregaofDolphin<avregaofKolas){
+  //     console.log(`Kolas is winner ${avregaofKolas} `)
+  //  }else if(avregaofDolphin===avregaofKolas){
+  //     console.log(`Match is Draw ${avregaofDolphin}=${avregaofKolas} `)
+  //  };
+
+  // switch case
+
+  // let day = prompt('please enday the day');
+  // console.log(day);
+  // switch(day){
+  //   case 'Monday':
+  //     console.log(`Today is Monday ${day}`) ;
+  //     break;
+  //   case 'Tuesday':
+  //   console.log(`Today is Tuesday ${day}`) ;
+  //  break;
+  //  case 'Wednesday':
+  //   console.log(`Today is Wednesday ${day}`) ;
+  //   break;
+  //   default:
+  //     console.log('No any day')
+  // };
+
+  // if(day==='monday'){
+  //     console.log('today is monday')
+  // }else if(day=='tuesday'){
+  //     console.log('today is tuseday')
+  // }else if(day=='wednesday' || day=='thrusday' ){
+  //     console.log('today is wednesday or thrusday')
+  // }else if(day=='friday'){
+  //     console.log('today is friday')
+  // }else if(day=='saturday' || day=='sunday' ){
+  //     console.log('today is saturday or sunday')
+  // }else{
+  //     console.log('Today is no Day')
+  // }
+
+  // let a=2;
+
+  // switch(a){
+  //     case 2 :
+  //         console.log('case 2');
+  //         break;
+  //     case 3 :
+  //         console.log('case 3');
+  //         break;
+  //     case 4 :
+  //         console.log('case 4');
+  //     case 5 :
+  //     console.log('case 5');
+  //     break;
+  //     default:
+  //       console.log('default val')
+
+  // }
+
+  // diffrent between if else and switch statement
+
+  //if else is condition based statement, its run the code according to true false value, if code of peice is tue its run if block otherwise run else block
+  // In case of switch statement we have to give the no. or string value into switch expression and according to this we match this to our case if case is match its run this case and terminate the statment;
+  //switch statemtn is decision type statement
+
+  // expression nd statement:
+
+  //expression is a code which producee some value into code like: 2+4, 1991, true&&faslse;
+
+  // Statement is  large peice of code which don't producee value itself its only perform some active like : if slse ans switch statement
+
+  // conditional(Ternary ) operator
+
+  let age = 17;
+
+  const minage = age >= 18 ? "you can take Vaccine " : "you cant take vaccine";
+  console.log(minage);
+</script>

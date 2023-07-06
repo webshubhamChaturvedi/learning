@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{box-sizing: border-box;}
+            .ratingBox{width:100%;max-width: 600px;background-color: #eee;box-shadow:0 0 10px #ddd ;padding:1rem;border-radius: 1rem;text-align: center;margin:3rem auto 0;}
+            .startRat{color: #6a6969;margin: 2rem 0rem;font-size: 1.3rem;}
+            .emojiblock img{width: 5rem;}
+            .ratingBox h2{font-size: 2rem;}
+            .message{font-size: 1.3rem;font-weight: 600;}
+        </style>
+    </head>
+     <body>
+          <div class="ratingBox">
+              <h2> Rating</h2>
+              <div class="emojiblock">
+                 <img   src="img/star2.png"  id="emoji"/>
+              </div>
+              <div class="startRat">
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+
+              </div>
+              <p class="message" id="ratingmessage"></p>
+          </div>
+     </body>
+     <script src="main.js"></script>
+</html>

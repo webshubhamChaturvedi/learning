@@ -1,0 +1,142 @@
+<script>
+  "use strict";
+  const game = {
+    team1: "RCB",
+    team2: "CSK",
+    Players: [
+      [
+        "FAF",
+        "Virat",
+        "DK",
+        "patidar",
+        "Harshal",
+        "Maxwell",
+        "Shahbaz",
+        "Hasaranga",
+        "Siraj",
+        "Hazlewood",
+        "Jadhav",
+      ],
+      [
+        "Dhoni",
+        "Jadeja",
+        "Gaikwad",
+        "Conway",
+        "Rahane",
+        "Moeen",
+        "Shivam",
+        "Deepak Chahar",
+        "Tushar Deshpande",
+        "Ben Stock",
+        "Raydu",
+      ],
+    ],
+    score: "4:0",
+    scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+    date: "Nov 9th, 2037",
+    odds: {
+      team1: 1.33,
+      x: 3.25,
+      team2: 6.5,
+    },
+  };
+
+  let [Player1, Player2] = game.Players; // seprate the two team player (by usign)
+  console.log(...Player1);
+  console.log(...Player2);
+
+  let [Captain, ...fieldPlayers] = Player1; //seprate  the team captain and Rest Player
+  console.log(
+    `Captain of team is ${Captain} and Rest are Players i.e ${fieldPlayers}`
+  );
+  const allPlayers = [...Player1, ...Player2]; //Store all player into a variable
+  console.log(allPlayers);
+  const players1Final = [...Player1, "Lomar", "Mukesh"];
+  console.log(players1Final);
+  const {
+    odds: { team1, x, team2 },
+  } = game;
+  console.log(`Team1:${team1}, Draw:${x}, Team2: ${team2}`);
+
+  let printGoal = function (...argu) {
+    console.log(`${argu.length}`);
+    console.log(`${argu}`);
+  };
+
+  printGoal(...game.scored);
+  let winnwer = team1 < team2 && "team1";
+  console.log(winnwer);
+
+  // =================challange 2==================
+  //1 Point
+  console.warn("//challange two////");
+  const gamescoreEntries = Object.entries(game.scored);
+  for (const [index, gamescore] of gamescoreEntries) {
+    console.log(`Goal${Number(index) + 1}: is by ${gamescore}`);
+  }
+  //2 Point
+  // let oddvalAvg = (val, arraylengh) => {
+  //   return val / arraylengh.length;
+  // };
+  const oddValue = Object.values(game.odds);
+  let sum = 0;
+  for (const oddval of oddValue) {
+    sum += oddval;
+  }
+  let avg = sum / oddValue.length;
+  console.log(avg);
+  //3 Point
+  // const oddEntries = Object.entries(game.odds);
+  // for (const [odd, oddValue] of oddEntries) {
+  //   const temstr = odd === "x" ? "draw" : `${game[odd]}`;
+  //   console.log(`Odd of ${temstr}:${oddValue}`);
+  // }
+
+  //bonus
+
+  // const scorers = {};
+  // for (const player of game.scored) {
+  //   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+  // }
+  // console.log(scorers);
+
+  //coding Challange 3
+
+  const gameEvents = new Map([
+    [17, "⚽ GOAL"],
+    [36, "� Substitution"],
+    [47, "⚽ GOAL"],
+    [61, "� Substitution"],
+    [64, "� Yellow card"],
+    [69, "� Red card"],
+    [70, "� Substitution"],
+    [72, "� Substitution"],
+    [76, "⚽ GOAL"],
+    [80, "⚽ GOAL"],
+    [97, "� Yellow card"],
+  ]);
+  //first point
+  let goal = [...new Set(gameEvents.values())];
+  console.log(goal);
+
+  //second point
+  gameEvents.delete(64);
+  console.log(gameEvents);
+
+  //third point
+  let time = [...gameEvents.keys()];
+
+  time = time.pop();
+  console.log(
+    `An event happened, on average, every ${time / gameEvents.size} minutes`
+  );
+
+  const events = [...gameEvents];
+  console.log(events);
+  //fourth point
+
+  for (const [key, value] of gameEvents) {
+    let zone = key <= 45 ? "First" : "Second";
+    console.log(`[${zone} HALF] ${key}:${value}`);
+  }
+</script>

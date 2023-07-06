@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+      .form-Block {
+        background-color: #ddd;
+        padding: 20px;
+        max-width: 600px;
+        margin: 40px auto;
+      }
+      .form-Block .form-group {
+        margin: 0 0 20px;
+      }
+      .form-Block .form-group .form-control {
+        padding: 10px;
+        height: 44px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        display: block;
+        width: 95%;
+      }
+      .form-Block .form-group textarea.form-control {
+        height: 90px;
+      }
+      .btn-submit {
+        background-color: rgb(29, 164, 209);
+        color: #fff;
+        font-weight: 800;
+        font-size: 20px;
+        padding: 20px;
+        border: 0px;
+        border-radius: 10px;
+      }
+      .centerAlign {
+        text-align: center;
+      }
+      .form-Block .form-group label {
+        margin-bottom: 10px;
+        display: inline-block;
+        color: gray;
+      }
+      .backgroundwhite {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .backgroundwhite label {
+        min-width: 130px;
+        font-weight: 800;
+        color: #1f1f1f;
+      }
+      .backgroundwhite span {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-Block">
+      <h1 class="centerAlign">Email Us</h1>
+      <p class="centerAlign">Fill out the form and send us a message. .....</p>
+      <form action="" id="loginform">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select class="form-control" id="subject">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Math</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Send A Message</label>
+          <textarea class="form-control" id="message"></textarea>
+        </div>
+        <div class="centerAlign">
+          <button class="btn btn-submit" type="submit">Send my message</button>
+        </div>
+      </form>
+      <div class="backgroundwhite" id="formoutput">
+        <div class="formoutput">
+          <a
+            class="editform"
+            style="
+              display: flex;
+              justify-content: end;
+              font-size: 18px;
+              font-weight: 800;
+              color: red;
+            "
+            >Edit</a
+          >
+          <div class="form-group">
+            <label>Name:</label>
+            <span id="namedispaly"> </span>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <span id="emaildispaly"> </span>
+          </div>
+          <div class="form-group">
+            <label>Subject:</label>
+            <span id="subjectdispaly"> </span>
+          </div>
+          <div class="form-group">
+            <label>Message:</label>
+            <span id="messagedispaly"> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      "use strict";
+      let firstname = document.getElementById("name");
+      let email = document.getElementById("email");
+      let subject = document.getElementById("subject");
+      let message = document.getElementById("message");
+      let namedispaly = document.getElementById("namedispaly");
+      let emaildispaly = document.getElementById("emaildispaly");
+      let subjectdispaly = document.getElementById("subjectdispaly");
+      let messagedispaly = document.getElementById("messagedispaly");
+      let formoutput = document.getElementById("formoutput");
+      let editform = document.querySelector(".editform");
+      formoutput.style.display = "none";
+      let vari = firstname.id;
+
+      //    let submitform=document.getElementById('submitform');
+
+      let loginforms = document.getElementById("loginform");
+
+      loginforms.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (
+          firstname.value == "" ||
+          email.value == "" ||
+          subject.value == "" ||
+          message.value == ""
+        ) {
+          alert("Please enter below Value");
+          firstname.style.border = "2px solid red";
+          email.style.border = "2px solid red";
+          subject.style.border = "2px solid red";
+          message.style.border = "2px solid red";
+        } else {
+          firstname.style.border = "0px solid red";
+          email.style.border = "0px solid red";
+          subject.style.border = "0px solid red";
+          message.style.border = "0px solid red";
+
+          namedispaly.innerHTML = firstname.value;
+          emaildispaly.innerHTML = email.value;
+          subjectdispaly.innerHTML = subject.value;
+          messagedispaly.innerHTML = message.value;
+          loginforms.style.display = "none";
+          formoutput.style.display = "block";
+          localStorage.setItem(vari, firstname.value);
+        }
+      });
+      editform.addEventListener("click", () => {
+        loginforms.style.display = "block";
+        formoutput.style.display = "none";
+        localStorage.getItem(vari, firstname.value);
+      });
+    </script>
+  </body>
+</html>
+
+<!-- <script>
+
+    'use strict';
+
+     let myname='false';
+    const myage=2;
+    if(myage!='true')  {
+        myname='true';
+    } 
+    console.log(myname)
+    if(myname)console.log(myname)
+
+</script> -->

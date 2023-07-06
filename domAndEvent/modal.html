@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+
+        /* ff 3.6+ */
+        background: -moz-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* safari 5.1+,chrome 10+ */
+        background: -webkit-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* opera 11.10+ */
+        background: -o-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* ie 10+ */
+        background: -ms-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* global 92%+ browsers support */
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+        margin: 0;
+        color: #000;
+        font-size: 1.2rem;
+        padding: 3rem;
+        background-repeat: no-repeat;
+      }
+      .modalBtn {
+        background: #2cc98f;
+        background-image: -webkit-linear-gradient(top, #2cc98f, #2b97b8);
+        background-image: -moz-linear-gradient(top, #2cc98f, #2b97b8);
+        background-image: -ms-linear-gradient(top, #2cc98f, #2b97b8);
+        background-image: -o-linear-gradient(top, #2cc98f, #2b97b8);
+        background-image: linear-gradient(to bottom, #2cc98f, #2b97b8);
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+      }
+
+      .modalBtn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+      }
+      .modalBtn + .modalBtn {
+        margin-left: 2rem;
+      }
+      .modalPageBlock {
+        text-align: center;
+      }
+      .modalBody {
+        padding: 1rem;
+        max-width: 500px;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 1rem;
+      }
+      .dflex {
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-between;
+      }
+      .modalBody {
+        margin: 2rem auto;
+      }
+      .crossBtn {
+        height: 30px;
+        width: 30px;
+        background-color: transparent;
+        border: 0px;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      .modalBackdrop {
+        background-color: #00000024;
+      }
+      .modalMain {
+        position: relative;
+        transition: 0.5s all ease;
+        z-index: 1;
+        top: auto;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .modalMain.hidden {
+        top: -100%;
+      }
+      .modalBackdrop {
+        background-color: #000000a6;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s all ease;
+        left: 0;
+      }
+      .hidden {
+        /* display: none; */
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.5s all ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modalPageBlock textceneter">
+      <button class="modalBtn modal1" onclick="getModal('modal1')">
+        Modal 1
+      </button>
+      <button class="modalBtn modal2" onclick="getModal('modal2')">
+        Modal 2
+      </button>
+      <button class="modalBtn modal3" onclick="getModal('modal3')">
+        Modal 3
+      </button>
+    </div>
+
+    <div class="modalPageBlock textceneter">
+      <h3>Button to open single pop up</h3>
+      <button class="modalBtn modalnew">Modal new</button>
+      <button class="modalBtn modalnew">Modal new</button>
+      <button class="modalBtn modalnew">Modal new</button>
+    </div>
+    <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nihil omnis
+        in architecto. Sapiente commodi voluptates iusto dolore praesentium.
+        Deserunt beatae ut eum ea officia. Modi quisquam enim deserunt molestiae.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora fugiat
+        expedita quasi odio pariatur quibusdam neque ullam! Earum dolores obcaecati
+        a in sint porro eius facilis expedita? Inventore, obcaecati amet? Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Illo doloribus ea quam
+        quasi vel, praesentium unde eveniet nostrum accusantium totam nesciunt amet
+        aliquid sapiente consequatur corporis, quisquam non enim saepe? Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Molestiae modi architecto
+        delectus non asperiores perspiciatis. Magni impedit cum temporibus quasi
+        harum omnis odio quam? Nam quis aliquid dolorem cupiditate natus? Lorem,
+        ipsum dolor sit amet consectetur adipisicing elit. Perferendis velit sunt
+        iste fugiat sequi ex nesciunt, perspiciatis placeat, ab rem neque eos eaque
+        reiciendis obcaecati in odit expedita, optio unde? Lorem, ipsum dolor sit
+        amet consectetur adipisicing elit. Culpa nihil omnis in architecto. Sapiente
+        commodi voluptates iusto dolore praesentium. Deserunt beatae ut eum ea
+        officia. Modi quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet
+        consectetur adipisicing elit. Tempora fugiat expedita quasi odio pariatur
+        quibusdam neque ullam! Earum dolores obcaecati a in sint porro eius facilis
+        expedita? Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde? Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Culpa nihil omnis in architecto. Sapiente commodi
+        voluptates iusto dolore praesentium. Deserunt beatae ut eum ea officia. Modi
+        quisquam enim deserunt molestiae. Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Tempora fugiat expedita quasi odio pariatur quibusdam
+        neque ullam! Earum dolores obcaecati a in sint porro eius facilis expedita?
+        Inventore, obcaecati amet? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Illo doloribus ea quam quasi vel, praesentium unde eveniet
+        nostrum accusantium totam nesciunt amet aliquid sapiente consequatur
+        corporis, quisquam non enim saepe? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Molestiae modi architecto delectus non asperiores
+        perspiciatis. Magni impedit cum temporibus quasi harum omnis odio quam? Nam
+        quis aliquid dolorem cupiditate natus? Lorem, ipsum dolor sit amet
+        consectetur adipisicing elit. Perferendis velit sunt iste fugiat sequi ex
+        nesciunt, perspiciatis placeat, ab rem neque eos eaque reiciendis obcaecati
+        in odit expedita, optio unde?</p> -->
+    <div class="modalMain hidden newmodal" id="modal1">
+      <div class="modalBody">
+        <div class="modalHeading dflex">
+          <h2>Modal</h2>
+          <button class="crossBtn" onclick="closeModal('modal1')">X</button>
+        </div>
+        <div class="modalBox">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+            exercitationem voluptates atque, quis vero laudantium id officiis
+            incidunt architecto rerum suscipit quidem itaque ad dolores! Nemo
+            nostrum ab voluptates esse.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="modalMain hidden" id="modal2">
+      <div class="modalBody">
+        <div class="modalHeading dflex">
+          <h2>Modal2</h2>
+          <button class="crossBtn" onclick="closeModal('modal2')">X</button>
+        </div>
+        <div class="modalBox">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+            exercitationem voluptates atque, quis vero laudantium id officiis
+            incidunt architecto rerum suscipit quidem itaque ad dolores! Nemo
+            nostrum ab voluptates esse.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="modalMain hidden" id="modal3">
+      <div class="modalBody">
+        <div class="modalHeading dflex">
+          <h2>Modal3</h2>
+          <button class="crossBtn" onclick="closeModal('modal3')">X</button>
+        </div>
+        <div class="modalBox">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+            exercitationem voluptates atque, quis vero laudantium id officiis
+            incidunt architecto rerum suscipit quidem itaque ad dolores! Nemo
+            nostrum ab voluptates esse.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="modalBackdrop hidden"></div>
+  </body>
+  <script>
+    "use strict";
+    let backdrop = document.querySelector(".modalBackdrop");
+
+    let getModal = function (modalIdDefine) {
+      document.getElementById(modalIdDefine).classList.remove("hidden");
+      backdrop.classList.remove("hidden");
+      document.querySelector("body").style.overflow = "hidden";
+    }; //Function for getting the modal is throungh button click
+
+    let modalCloseProp = function () {
+      backdrop.classList.add("hidden");
+      document.querySelector("body").style.overflow = "auto";
+      document.querySelector(".modalMain").classList.add("hidden");
+    };
+    let closeModal = function (getModalnew) {
+      document.getElementById(getModalnew).classList.add("hidden");
+      modalCloseProp();
+    };
+
+    backdrop.addEventListener("click", function () {
+      modalCloseProp();
+      closeModal("modal1");
+      closeModal("modal3");
+      closeModal("modal2");
+    });
+
+    //perform the action on keyboard event , useful , its a global abject so perfom on all the docoment elemt
+
+    document.addEventListener("keyup", function (e) {
+      //Important Note :  here we get which key is pressed   key up is itself an event which is global event and store an object of click keyboard value
+      if (e.key === "Escape" && !signleModal.classList.contains("hidden")) {
+        modalCloseProp();
+        closeModal("modal1");
+        closeModal("modal3");
+        closeModal("modal2");
+      }
+    });
+
+    //for opening a single modal
+    let signleModal = document.querySelector(".modalMain");
+    let allThreeButton = document.querySelectorAll(".modalnew");
+    // console.log(signleModal, allThreeButton);
+    let openmodal = function () {
+      signleModal.classList.remove("hidden");
+      backdrop.classList.remove("hidden");
+      document.querySelector("body").style.overflow = "hidden";
+    };
+    for (let i = 0; i < allThreeButton.length; i++) {
+      allThreeButton[i].addEventListener("click", openmodal);
+    }
+  </script>
+</html>

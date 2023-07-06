@@ -1,0 +1,124 @@
+<script>
+  //String manipulation
+
+  let airlines = "Indian Airlines";
+  // for (string of airlines) {
+  //   console.log(string);
+  // }
+  console.log([...airlines]);
+  console.log(airlines.slice(2, 5));
+
+  let newstr = airlines.slice(0, airlines.indexOf(" "));
+  let newstr2 = airlines.slice(airlines.lastIndexOf(" "));
+  newstr2 = airlines.slice(airlines.lastIndexOf(" ") + 1);
+  let str = airlines.slice(0, -5);
+  console.log(newstr);
+  console.log(newstr2);
+  console.log(str);
+
+  let airlineSheet = function (sheet) {
+    let getSheetNo = sheet.slice(-1); //get last char of string
+    return getSheetNo === "B" || getSheetNo === "E"
+      ? `Sheet is Middle`
+      : "Not Middle";
+  };
+  // airlineSheet("11B");
+  console.log(airlineSheet("11B"));
+  console.log(airlineSheet("11E"));
+  console.log(airlineSheet("1T"));
+
+  //string method
+  let passanger = "SHubham";
+  let paslower = passanger.toLowerCase();
+  let passangerCorr = paslower.charAt(0).toUpperCase() + paslower.slice(1);
+  console.log(passangerCorr);
+  //make function for above code
+
+  let correctName = function (passname) {
+    //Correct name of passanger
+    let passlowercase = passname.toLowerCase();
+    let correctName = passlowercase[0].toUpperCase() + passlowercase.slice(1);
+    return correctName;
+  };
+  console.log(correctName("ChaturVEdi"));
+  console.log(correctName("aNShu"));
+  console.log(correctName("rOHIT NNNN"));
+
+  //Email Correction remove trim menthod to remove unwanted space and \n
+  let email = "chaturvedishubham5@gmail.com";
+  let getEmail = " ChaturvediShubham55@gmail.com \n ";
+  let correctEmail = getEmail.toLowerCase().trim();
+  console.log(correctEmail);
+  //replace method
+  let priceGb = "289,543£";
+  let priceUsa = priceGb.replace("£", "$").replace(",", ".");
+  console.log(priceUsa);
+  //replaceAll method
+  let largestr =
+    "All developer come in confrence seat , Please come to this seat";
+  let corrctStr = largestr.replaceAll("seat", "room");
+  let corrctStr2 = largestr.replace(/seat/g, "room");
+
+  console.log(corrctStr2);
+  //include
+  console.log(largestr.includes("All"));
+  console.log(largestr.includes("All"));
+  console.log(largestr.startsWith("ll"));
+  console.log(largestr.endsWith("seat"));
+
+  // let myname = "shubham chaturvedi";
+  const [FirstName, LastName] = "shubham chaturvedi".split(" "); //split method
+  let str2 = "a+hello+bro+how";
+  console.log(str2.split("+"));
+
+  let editName = [
+    "Mr.",
+    FirstName[0].toUpperCase() + FirstName.slice(1),
+    LastName[0].toUpperCase() + LastName.slice(1),
+  ].join(" "); //join method
+  console.log(editName);
+
+  //function to captalize the string
+
+  let captalizezSt = function (str) {
+    let splitstr = str.split(" ");
+    let newarray = [];
+    for (letter of splitstr) {
+      // newarray.push(letter[0].toUpperCase() + letter.slice(1).toLowerCase());
+      newarray.push(letter.replace(letter[0], letter[0].toUpperCase()));
+    }
+    console.log(newarray.join(" "));
+  };
+  captalizezSt("my name is shubham");
+  captalizezSt("my fRiend Name is Amit");
+
+  let struncor = "my name is shubham";
+  let strSplit = struncor.split(" ");
+  let newArray = [];
+  for (a of strSplit) {
+    newArray.push(a[0].toUpperCase() + a.slice(1));
+  }
+  console.log(newArray.join(" "));
+
+  //Padding a string
+
+  //
+  let flights =
+    "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+  console.log(flights);
+  let splitFlight = flights.split("+");
+
+  for (value of splitFlight) {
+    let newVal = value;
+    let [first, second, third, last] = newVal.split(";");
+    let firstcorrect = first.split("_").join(" ");
+    let secondval = second.slice(0, 3).toUpperCase();
+    let thirdVal = third.slice(0, 3).toUpperCase();
+    let fouthVal = last.replace(":", "h");
+
+    let output = `${first.startsWith("_Delayed") ? "🔴" : ""}
+       ${firstcorrect} from ${secondval} to ${thirdVal} ${fouthVal}`;
+    console.log(`${output}`);
+  }
+</script>

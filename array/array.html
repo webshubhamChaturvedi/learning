@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul></ul>
+  </body>
+
+  <script>
+    "use strict";
+    //1-map method==============
+    let mapArr = [5, 6, 3, 4];
+    let mapNewArr = mapArr.map((val) => val + 3); //map function Create a new Array , map method is used a perfom a secific opertion on each and every elemnt of array and store that value into new array, the old array remain same
+    console.log(`Map Method:`, mapNewArr); //store that value into new array
+    console.log(`No chnage on Old Array In Map:`, mapArr); //the old array remain same
+    //2-filter===============
+    let filterArr = [2, 3, 4, 6, 8, 10, 14];
+    let filternewArr = filterArr.filter((arr) => arr % 2 === 0); //Filter method is use to create a new array which element pass the given condition into the function.
+    console.log(`Filter Method:`, filternewArr);
+    console.log(`No chnage on Old Array In Filter:`, filterArr); //the old array remain same
+    //3-sort===================
+    let sortArr = [3, 10, 40, 3];
+    sortArr.sort((val1, val2) => val1 - val2); //sort method change the property on current array
+    let removedupl = new Set(sortArr); //-remove duplicate Item  by using Set method   ========Set method
+    console.log(`Sort method:`, sortArr, `Set Method`, removedupl);
+    //4. indexOf and lastIndexOf ======used to find the index of element
+    let findArr = [3, 10, 40, 3, 3, 10, 40, 10];
+    console.log(findArr, `Find Index`, findArr.lastIndexOf(10));
+    ///5.some method ==========
+    console.log(
+      `some method:`,
+      findArr.some((num) => num >= 3)
+    ); ///some method- give the true or false value, if alleast  one elemnt of array  pass the condition  gives the true
+    //6.every method=================
+    console.log(
+      `every method:`,
+      findArr.every((num) => num >= 4)
+    );
+    console.log(
+      `every method:`,
+      findArr.every((num) => num >= 3)
+    ); ///Every method-  is the Opposite of the Some method, give the true , if all elemnt of array pass the given condtion, if any element dont pass the constion its give the false
+
+    //7-forEach method============= foreach, method is used for loop over an array by given callback function to earch and every element or array
+    let Arrloop = ["Ravi", "Shyam", 2, "Anushu", 5, 6];
+    Arrloop.forEach((element) => {
+      let li = document.createElement("li");
+      let text = document.createTextNode(`${element}`);
+      li.appendChild(text);
+      document.querySelector("ul").appendChild(li);
+      console.log(element);
+    });
+
+    //8-concat( )=========This method is used to merge two or more arrays and returns a new array, without changing the existing arrays.
+    let arrA = [1, 4, 5, 6];
+    let arrb = ["Mohan", "Suresh", 4];
+    let newArray = arrA.concat(arrb); // or we can use the spread method [...arr1,...arr2]
+    console.log(newArray);
+
+    //9-Slice method====This is cut the array element and give the new array with that element
+    let sliceArr = ["a", "b", "c", "d", "e", "f"];
+    let slicedArray = sliceArr.slice(2);
+    let slicedArray2 = sliceArr.slice(2, 4);
+
+    console.log(slicedArray); //op: [ "c", "d", "e", "f"];
+    console.log(slicedArray2); //op: [ "c", "d",];
+    console.log(sliceArr.slice(-1)); //Give the last element of the array  (if we need the last element of an array we can used pop and slice method)
+    console.log(sliceArr.slice(1, -2)); //remove last two elemnt and first element of the array
+
+    //10-splice method====same as slice method but its chnage the original array
+    let spliceeArr = ["a", "b", "c", "d", "e", "f"];
+    let splice1 = spliceeArr.splice(1, 2);
+
+    console.log(splice1, spliceeArr);
+
+    //11-Reverse method=== its reverse the elemnt of array , its mutate with the original array , means change the original array
+    let revArray = ["a", "b", "c", "d", "e", "f"];
+
+    let reversedArr = revArray.reverse(); //no need argument
+    console.log(reversedArr, revArray);
+    //12-join method=====  this method give the new string by concatenating all of the array’s elements separated by the specified separator.
+    let joinArr = ["S", "h", "u", "b", "h", "a", "m"];
+
+    console.log(joinArr.join(""));
+  </script>
+</html>

@@ -1,0 +1,359 @@
+<script>
+  "use strict";
+
+  //Spread Oprator
+
+  let Spread = [1, 4, 5, 6, 7];
+
+  let str = "shubham";
+
+  let reverce = [...str].reverse().join("");
+  //   console.log(reverce); //Reverse the string
+
+  let newarray = [2, 3, 4];
+  let [a1, b1, c1, d1 = 0] = [...Spread];
+
+  //   console.log([a1, b1, ...c1, d1]);
+  let [a, b, ...abc] = [1, 2, 3, 4, 5];
+  //   console.log(a, b, abc); //Rest Operater
+
+  let obj = { ...Spread };
+  console.log(obj);
+
+  function multi(a, b, c) {
+    return a * b * c;
+  }
+
+  let multiply = multi(...Spread);
+  //   console.log(multiply);
+
+  //   console.log(obj);
+
+  //   function sum(v1, v2, v3) {
+  //     return v1 + v2 + v3;
+  //   }
+  //   console.log(sum(...Spread));
+
+  let arrA = [2, 4, 5];
+  let arrB = [6, 7, 8];
+  //   arrB = arrA;
+  arrB = [...arrA];
+  arrB.push(9, 10);
+
+  //   arrA = arrA.concat(arrB);
+  //   console.log(arrA);
+  //   arrA = [...arrA, ...arrB];
+  //   console.log(arrA, arrB);
+
+  let Array = [10, 20, 30];
+
+  //   let [a, b] = Array;  //Retrive data from array
+  //   let [a, ,c] = Array;  //Retrive data but ignore the some varible
+  //   let [a = 1, b = 0, c = 0] = Array; //Using defalut value of variable
+
+  //   console.log(a, b, c);
+
+  let object = { a: 1, b: { c: 4 } };
+  const {
+    a: vala,
+    b: { c: valc },
+  } = object;
+
+  //   console.log(vala, valc);
+
+  let objectVar = {
+    Name: "Shubham",
+    BirthYear: 1994,
+    currentYear: 2023,
+    Age: function () {
+      const greet = () => console.log(`hey ${this.Name}`);
+      console.log(this.currentYear - this.BirthYear);
+      greet();
+    },
+  };
+  //   objectVar.newFun;
+  //   objectVar.Age();
+  //   console.log(objectVar.Age());
+
+  let newOb = {
+    FirstName: "Shubham",
+    LastName: "Chaturvedi",
+    Age: 29,
+  };
+
+  let chnageOb = Object.assign({}, newOb);
+  chnageOb.Age = 32;
+  //   console.log(chnageOb.Age);
+  //   console.log(newOb.Age);
+
+  //Array Desturctring
+
+  let arr = [2, 6, 8, 10];
+
+  let [arr1, arr2, , arr3] = arr;
+  //   console.log(arr1, arr2, arr3);
+
+  //   let arrnew = arr1;
+  //   arr1 = arr3;
+  //   arr3 = arrnew;
+  //   arr = [arr1, arr2, arr3];
+  //   console.log(arr);
+
+  let resturent = {
+    Name: "Khana Khajana",
+    Location: "Golghar Gorakhpur",
+    Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
+    MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
+    order: function (food1, food2) {
+      return [this.Starter[food1], this.MainCourse[food2]];
+    },
+  };
+
+  //   const [orderfood1, orderfood2] = resturent.order(1, 3);
+  //   console.log(orderfood1, orderfood2);
+
+  //   let nesterArray = [2, 4, 5, [8, 9, 7]];
+  //   let [a, b, , [c, d, e]] = nesterArray;
+  //   console.log(a, b, c, d, e);
+
+  // Array Desturctring
+  let resturentObject = {
+    Name: "Khana Khajana",
+    Location: "Golghar Gorakhpur",
+    Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
+    MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
+    order: function (food1, food2) {
+      return [this.Starter[food1], this.MainCourse[food2]];
+    },
+    Desert: ["Icecream"],
+    orderTime: {
+      Monday: {
+        StartTime: "9:00",
+        EndTime: "20:00",
+      },
+      Tuesday: {
+        StartTime: "10:00",
+        EndTime: "20:00",
+      },
+    },
+    orderSummary: function ({ Time, Location, starter, Course }) {
+      return `${Time} and location is ${Location} with starter ${this.Starter[starter]} and main course is ${this.MainCourse[Course]}`;
+    },
+  };
+
+  let {
+    orderTime: {
+      Monday: { StartTime: openinghr },
+    },
+  } = resturentObject;
+  console.log(openinghr);
+
+  let ordersum = resturentObject.orderSummary({
+    Time: "9",
+    Location: "Padri Bazar",
+    starter: 2,
+    Course: 1,
+  });
+  //   console.log(ordersum);
+
+  const {
+    orderTime: {
+      Tuesday: { StartTime: Time = 5 },
+      Monday: { StartTime },
+    },
+  } = resturentObject;
+  //   console.log(Time, StartTime);
+
+  const { Name, Location } = resturentObject; //We have to use the same key name as object
+  const { Name: restname, Location: RestLoc } = resturentObject; //We can use the new varibale insted of object key, but assign this key to new varibale
+  const { Desert = [], Location: RestLoc2 = [] } = resturentObject; //using default value
+  //   console.log(Desert, RestLoc2);
+
+  let restPractice = {
+    Name: "Khana Khajana",
+    Location: "Golghar Gorakhpur",
+    Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
+    MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
+    order: function (food1, food2) {
+      return [this.Starter[food1], this.MainCourse[food2]];
+    },
+    Desert: ["Icecream"],
+    orderTime: {
+      mon: {
+        StartTime: 0,
+        EndTime: "20:00",
+      },
+      tue: {
+        StartTime: "10:0",
+        EndTime: "20:00",
+      },
+      wed: {
+        StartTime: "9:30",
+        EndTime: "18:00",
+      },
+      thrus: {
+        EndTime: "18:00",
+      },
+    },
+    orderSummary: function ({ Time, Location, starter, Course }) {
+      return `${Time} and location is ${Location} with starter ${this.Starter[starter]} and main course is ${this.MainCourse[Course]}`;
+    },
+  };
+  const [Burger, , Samosa, ...rest] = [
+    ...restPractice.Starter,
+    ...restPractice.MainCourse,
+  ];
+
+  let [main, , second] = restPractice.Starter;
+  console.log(main, second);
+
+  [main, , second] = [second, , main];
+
+  console.log(Burger, Samosa, ...rest);
+  console.log(main, second);
+  console.log(restPractice.Starter);
+
+  const add = function (...value) {
+    let sum = 0;
+    for (let i = 0; i < value.length; i++) {
+      sum += value[i];
+    }
+    console.log(sum);
+  };
+  //   add(1, 2, 3);
+  let x = [23, 34, 56];
+  add(...x);
+
+  let arr4 = [1, 2, 3];
+  let [i, m, t] = [...arr4];
+  console.log(i, m, t);
+  let myname = 0;
+
+  let nameTru = myname ?? 10;
+  console.log(nameTru);
+
+  let shortCircut = null || undefined || null || 0 || false;
+  let shortCircutAnd =
+    resturentObject.Name && "Hello" && 2 && 2 && resturentObject.a;
+
+  console.log(shortCircut, shortCircutAnd);
+
+  //example of short circuting
+
+  let res1 = {
+    name: "Dominos",
+    outletNo: 20,
+  };
+  let res2 = {
+    name: "Pizzerai",
+  };
+
+  // res2.outletNo = res2.outletNo || res1.outletNo;
+  //logical or
+
+  // or assignment oprator
+  res2.outletNo ||= res1.outletNo; //we can write the 244 line code as this
+  res2.outletNo = 30;
+  res1.outletNo ||= res2.outletNo;
+  console.log(res1, res2);
+  let data1 = [17, 21, 23];
+  let Data2 = [12, 5, -5, 0, 4];
+
+  let printForecast = function (arr) {
+    let temp;
+
+    for (i = 0; i < arr.length; i++) {
+      temp = arr[i];
+      console.log(`The temp of day ${i + 1}  is  ${temp}C`);
+    }
+  };
+  // printForecast(data1);
+  printForecast(Data2);
+
+  const game = {
+    players: [
+      [
+        "Neuer",
+        "Pavard",
+        "Martinez",
+        "Alaba",
+        "Davies",
+        "Kimmich",
+        "Goretzka",
+        "Coman",
+        "Muller",
+        "Gnarby",
+        "Lewandowski",
+      ],
+      [
+        "Burki",
+        "Schulz",
+        "Hummels",
+        "Akanji",
+        "Hakimi",
+        "Weigl",
+        "Witsel",
+        "Hazard",
+        "Brandt",
+        "Sancho",
+        "Gotze",
+      ],
+    ],
+  };
+
+  const [aar2, [...ab]] = game.players;
+
+  console.log(...aar2, ...ab);
+
+  // for of loop and optional chaining
+
+  const days = ["mon", "tue", "wed", "thrus", "fri"];
+
+  for (const day of days) {
+    let openinghrs = restPractice.orderTime?.[day]?.StartTime ?? "Not Open";
+    console.log(`${day} is opening hr is ${openinghrs}`);
+  }
+  console.log(restPractice.order?.(1, 2) ?? "Method not exist");
+
+  // const openingHours = {
+  //   [days[2]]: {
+  //     open: 12,
+  //     close: 22,
+  //   },
+  //   [days[4]]: {
+  //     open: 9,
+  //     close: 18,
+  //   },
+  //   [days[1]]: {
+  //     open: 10,
+  //     close: 18,
+  //   },
+  // };
+  let Properties = Object.keys(restPractice.orderTime);
+  let restopen = `The Resturent is open at ${Properties.length} days `;
+
+  for (const day of Properties) {
+    restopen += `${day},`;
+  }
+  console.log(restopen);
+  let objectValue = Object.values(restPractice.orderTime);
+  console.log(objectValue);
+  let objectentry = Object.entries(restPractice.orderTime);
+
+  for (const [keys, { StartTime, EndTime }] of objectentry) {
+    console.log(
+      `on ${keys} the rest is open at ${StartTime} and close at ${EndTime}`
+    );
+  }
+
+  //Sets Data Structure
+
+  let array = [1, 5, 4, 6, 2, 3, 2, 4, 10];
+  let sortarray = array.sort((a, b) => a - b); //for sort
+  let removedulp = new Set(sortarray); //remove duplicate
+  console.log(removedulp, sortarray);
+  let orderset = new Set(["Pizza", "Popcorn", "Pizza", "Burgur"]);
+  console.log(orderset);
+
+  console.log(orderset.size); //can get the size of the set
+</script>

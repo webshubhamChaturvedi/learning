@@ -1,0 +1,163 @@
+
+<p id="para">Click Me</p>
+<p id="para2"></p>
+<script>
+let bill=430;
+let tip1=15
+let tip2=20
+let tip;
+// let tipPercange=(bill*tip)/100
+
+tip=(bill>=50 && bill<=300)?`${tip1}`:`${tip2}`
+let tipsval=(bill*tip)/100;
+const totalvalue=bill+tipsval
+console.log(`The bill is ${bill} , tip % is ${tip}  so tip is ${tipsval} therefore total value is ${totalvalue}`);
+
+
+let largeno=20;
+
+switch(largeno){
+
+  case 10:   
+    let abc=20;
+    let bc=30;
+    let sumab=abc+bc;
+    console.log(sumab);
+   break;
+   case 20:
+    console.log('no is 20');
+    break;
+    case 30:
+    console.log('no is 30');
+    break;
+    case 40:
+    console.log('no is 40');
+    break;
+    case 50:
+    console.log('no is 50');
+    default:
+    console.log('No Match');
+
+}
+
+
+let buttonId=document.getElementById('para');
+let button2=document.getElementById('para2');
+
+
+buttonId.addEventListener('click', chnageparafun)
+
+function chnageparafun(){
+  const enterPara= prompt('enter The value');
+  buttonId.textContent=`Button Value: ${enterPara}`;
+  button2.innerhtml='hello'; 
+  
+}
+
+
+   let duplicateArray=[35,25,30,20,35,25,2,4,5,3,4,5,6,55];
+  let iniqueValue=[...new Set(duplicateArray)]  //set object method
+  console.log(iniqueValue);
+  
+
+let myString='Should Work';    //reverse string by loop
+
+let reverseString='';
+
+function reverseStringFun(revstr){
+  for(i=revstr.length-1;i>=0;i--){
+    reverseString +=revstr[i];
+
+  }
+  console.log(reverseString)
+}
+
+reverseStringFun(myString);
+
+let reverseStringByFunction= myString.split('').reverse().join('');//reverse string by inbuild Event
+
+console.log(reverseStringByFunction)
+function dividedfunc(num){
+ return num%10==0
+}
+let newarray=duplicateArray.filter(dividedfunc);
+
+console.log(newarray)
+
+  let sortvalue=iniqueValue.sort(
+    function(a, b)
+    {
+      return  result =a-b;
+    }
+
+
+  );
+  console.log(sortvalue);
+  console.log(sortvalue[0]);//Smallest no. in array
+  console.log(sortvalue[sortvalue.length-1])//largest no. in array
+
+//Template Litral
+
+let firstName='Shubham';
+let renuAge=30;
+let renuprofession="teacher";
+ 
+let combinedRenuData=`My Name is ${firstName} , My Sister age is ${renuAge} and her profession is ${renuprofession}`
+console.log(combinedRenuData)
+
+//Condition
+
+let clientAge=10;
+let isEnoughtOld=clientAge>=18;
+if(isEnoughtOld){
+  console.log(`Ready For Liciense`)
+}else{
+  console.log(`Not Ready For Liciense`)
+
+
+}
+
+
+
+
+
+
+
+
+
+
+  let country='India';
+  let continent='Asia';
+  let population='123 Million';
+  console.log(country, continent,population);
+
+// Data Type
+let myAge=23;      // Number
+console.log(myAge)
+console.log(typeof myAge)
+
+let myProfession='Frontend Dev'      // String
+console.log(myProfession)
+console.log(typeof myProfession)
+myProfession='Software Developer'
+
+let mySalary;     // undefine
+console.log(mySalary);
+console.log(typeof mySalary);
+
+let myBalance=null;    // Null
+console.log(null);
+console.log(typeof myBalance);
+
+let mySalaryInc= Symbol('Symbol Exaple')   //Symbol
+console.log(mySalaryInc);
+console.log(typeof mySalaryInc);
+
+let jobSearching=false;  //Boolean
+console.log(typeof jobSearching);
+
+let x=10*3%2
+console.log(x)
+
+
+</script>

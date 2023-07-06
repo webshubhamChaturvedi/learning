@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <button>red</button>
+    <button>blue</button>
+    <button>green</button>
+    <select>
+      <option selected>select Option</option>
+      <option>red</option>
+      <option>blue</option>
+      <option>green</option>
+    </select>
+  </body>
+  <script>
+    "use strict";
+
+    let allBtn = document.querySelectorAll("button");
+
+    let btnclickFunc = function (arr) {
+      //   for (let abc of arr) {
+      //     abc.addEventListener("click", (e) => {
+      //       console.log(e.target);
+      //     });
+      //   }
+
+      arr.forEach((element) => {
+        element.addEventListener("click", (e) => {
+          //   console.log(e.target);
+          e.target.style.display = "none";
+        });
+      });
+    };
+    btnclickFunc(allBtn);
+
+    // allBtn.addEventListener("click", (e) => {
+    //   console.log(e);
+    // });
+
+    let selectcolor = document.querySelector("select");
+    selectcolor.addEventListener("change", function (e) {
+      document.querySelector(
+        "body"
+      ).style.backgroundColor = `${e.target.value}`;
+      //   e.target.value = "";
+    });
+
+    // let allbtn = document.querySelectorAll("button");
+    // [...allbtn].forEach((arr, i) => {
+    //   arr.addEventListener("click", function (e) {
+    //     document.querySelector(
+    //       "body"
+    //     ).style.backgroundColor = `${e.target.innerHTML}`;
+    //   });
+    // });
+
+    // console.log([...allbtn]);
+
+    // allbtn.addEventListener("click", function (e) {
+    //   console.log(e.target);
+    // });
+
+    // const arr = ["shubham", "gaurav", "anshu", "amit", "anil", "splt"];
+    // let newarr = arr.map((arr) => arr.match("u"));
+    // let newarr2 = [...newarr];
+    // console.log(newarr2);
+  </script>
+</html>

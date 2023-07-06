@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <!-- <p class="selecttheElement">Guess me</p> -->
+
+    <div id="mylinks">
+      <button>click Button</button>
+      This is my <b>link collection</b>:
+      <ul class="mylist">
+        <li>
+          <a href="www.borland.com">Bye bye <b>Borland</b> </a>
+        </li>
+        <li>
+          <a href="www.microfocus.com">Welcome to <b>Micro Focus</b></a>
+        </li>
+      </ul>
+      This is my link collection:
+    </div>
+  </body>
+  <script>
+    "use strict";
+    let button = document.querySelector("button");
+    let selectMylink = document.querySelector("#mylinks");
+    let getMylink1 = document.querySelector("#mylinks").textContent;
+    let getMylink2 = document.querySelector("#mylinks").innerText;
+    let getMylink3 = document.querySelector("#mylinks").innerHTML;
+    let list = document.querySelector("ul");
+
+    button.addEventListener("click", function () {
+      list.classList.contains("mylist"); //check class is present or not give true /false value , can use as a condition
+    });
+
+    // console.log(selectMylink);
+    // console.log(getMylink1);
+    // console.log(getMylink2);
+    // console.log(getMylink3);
+  </script>
+</html>

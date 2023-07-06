@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+           <style>
+            *{box-sizing: border-box;}
+            html,body{height: 100%;}
+            body{background-color: antiquewhite;padding:2rem}
+            .clorfliperbox{max-width: 20%;width: 100%;margin:auto;}
+            .counterblock{display: flex;}
+            .counterblock button{background-color: lightseagreen;padding: 0.6rem 1rem;border: 0px;font-size: 30px;color: #fff;width: 50px;}
+            #counterinput{border: 0px;width: 100px;background: transparent;border: 1px solid #d4cbcb;text-align: center;font-size: 30px;}
+            .bar{height: 10px;background-color: aqua;width: 0;position: fixed; top: 0; left: 0;}
+        </style>
+        </style>
+    </head>
+    <body>
+        <div class="bar" id="processbar"></div>
+       <div class="counterblock" style="margin-bottom:20px">
+        <button id="descrement" onclick=counterdec()>-</button>
+        <input id="counterinput" readonly>
+        <button id="increment"  onclick=counterinc()>+</button>
+       </div>
+
+       <button id=""  onclick=reset()>Reset</button>
+
+
+        <div class="clorfliperbox">
+            <h1>Color Flipper</h1>
+            <h2>Background Color: <span id="colorname"></span></h2>
+            <button id="flipcolor">Flip Color</button>
+            <button id="Reset">Reset Color</button>
+
+        </div>
+    </body>
+    <script>
+   
+ let processBar=document.getElementById('processbar')
+ window.addEventListener('scroll', function() {
+    processBar.style.width = (window.pageYOffset) + '%';
+});
+
+        // counter Code
+   let count=0  
+   document.getElementById('counterinput').value=0;
+   
+
+    function counterinc(){
+      count++
+      document.getElementById('counterinput').value=count;
+    }
+    function counterdec(){
+        (count<=0)?count=0:count--;
+      document.getElementById('counterinput').value=count;
+    };
+    function reset(){
+        count=0  
+      document.getElementById('counterinput').value=count;
+
+    }
+        // counter Code End
+
+         let colorName=document.getElementById('colorname');
+         let flipButton=document.getElementById('flipcolor');
+         let resetButton=document.getElementById('Reset');
+         let randomColor;
+         flipButton.addEventListener('click',()=>{
+            randomColor=Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor='#'+ randomColor;
+            document.body.style.color='#fff';
+            console.log(randomColor)
+
+         })
+         resetButton.addEventListener('click',()=>{
+            document.body.style.cssText= "background-color:antiquewhite;color:#000"
+
+         })
+         
+
+    //  function changeColor(){
+    //     document.body.style.backgroundColor='red'
+
+    //  }
+
+
+    </script>
+</html>

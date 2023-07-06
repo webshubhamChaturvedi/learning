@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+
+        /* ff 3.6+ */
+        background: -moz-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* safari 5.1+,chrome 10+ */
+        background: -webkit-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* opera 11.10+ */
+        background: -o-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* ie 10+ */
+        background: -ms-radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+
+        /* global 92%+ browsers support */
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 129, 255, 1) 0%,
+          rgba(0, 188, 212, 1) 50%,
+          rgba(238, 130, 238, 1) 100%
+        );
+        margin: 0;
+        color: #000;
+        font-size: 1.2rem;
+        padding: 3rem;
+        background-repeat: no-repeat;
+      }
+      .dflex {
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-between;
+      }
+      .piggameMain {
+        max-width: 60%;
+        margin: auto;
+        /* background-color: #e91e6375; */
+        /* padding: 2rem; */
+      }
+      .pigGameOut {
+        display: flex;
+        position: relative;
+      }
+      .pigGameOut .commonblock {
+        width: 50%;
+        background-color: #e91e6375;
+        padding: 2rem;
+      }
+      .pigGameOut .commonblock.active {
+        background-color: #fff176;
+      }
+      .commonblock.active .currentValueBlock {
+        background-color: #fc6666;
+      }
+      .score {
+        font-size: 3rem;
+        color: #fc6666;
+      }
+      .gameblockcontent {
+        text-align: center;
+        min-height: 400px;
+        display: grid;
+      }
+      .gameblockcontent h2 {
+        font-size: 1.5rem;
+      }
+      .currentValueBlock {
+        max-width: 200px;
+        width: 100%;
+        min-height: 100px;
+        border-radius: 1rem;
+        padding: 1.3rem;
+        margin: auto;
+        background-color: #4fc3f7;
+        color: #fff;
+        font-size: 1.4rem;
+      }
+      .currentValue {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #000;
+      }
+      .commonbtn {
+        font-weight: 600;
+        background-color: #fffffffa;
+        border-radius: 0.6rem;
+        padding: 0.6rem 1rem;
+        border: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.9rem;
+        cursor: pointer;
+        min-width: 6rem;
+      }
+      .refreshGame {
+        top: 2rem;
+      }
+      .diceRoll {
+        bottom: 10rem;
+      }
+      .holdbtn {
+        bottom: 6rem;
+      }
+      .diceBlock {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        transform: translateX(-50%);
+        width: 70px;
+      }
+      .diceBlock img {
+        width: 100%;
+      }
+      .winnerPopUp {
+        position: fixed;
+        width: 100%;
+        background: #181919e8;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        display: none;
+      }
+      .winnerPopUp.display {
+        display: block;
+      }
+      .PlayerName {
+        font-size: 3rem;
+        margin-top: 100px;
+        color: #d81b60;
+        text-align: center;
+      }
+      .content .trophy img {
+        display: block;
+        margin: auto;
+        max-width: 128px;
+        filter: drop-shadow(0 0 4px #000);
+        transition: 0.5s;
+        animation: animate 2s linear infinite;
+      }
+
+      @keyframes animate {
+        0% {
+          transform: scale(1);
+        }
+
+        25% {
+          transform: scale(1.1);
+        }
+
+        50% {
+          transform: scale(1);
+        }
+
+        75% {
+          transform: scale(1.2);
+        }
+
+        100% {
+          transform: scale(1.1);
+        }
+      }
+
+      .content .text h1 {
+        font-weight: 900;
+        font-size: 8rem;
+        color: #ffeb3b;
+        text-shadow: 8px 0px 0px #ec407a;
+      }
+      .noabsolut {
+        position: initial;
+      }
+      .winnerPopUp {
+        text-align: center;
+      }
+      .content {
+        position: relative;
+        top: 3rem;
+      }
+      .winner {
+        background-color: #000 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="piggameMain textceneter">
+      <div class="pigGameOut">
+        <div class="winnerPopUp">
+          <div class="content">
+            <div class="trophy">
+              <img src="img/trophy.png" alt="trophy" />
+            </div>
+            <div class="text">
+              <h1 class="PlayerName">Award</h1>
+            </div>
+          </div>
+          <!-- <h1 class="PlayerName"></h1> -->
+          <button
+            class="commonbtn refreshGame noabsolut"
+            onclick="NewGameFunction()"
+          >
+            Play Again
+          </button>
+        </div>
+        <button class="commonbtn refreshGame" onclick="NewGameFunction()">
+          🔄 New game
+        </button>
+        <button class="commonbtn diceRoll">🎲 Roll dice</button>
+        <button class="commonbtn holdbtn">📥 Hold</button>
+        <div class="diceBlock">
+          <img src="" id="diceBlockImg" />
+        </div>
+
+        <div class="gamelft commonblock active player-0">
+          <div class="gameblockcontent">
+            <div>
+              <h2>Player 1</h2>
+              <div class="score firstplayerscore" id="score-0">0</div>
+            </div>
+            <div class="currentValueBlock">
+              <p>Current</p>
+              <h4
+                class="currentValue playerFirst currentvaluePlayer-0"
+                id="currentvaluePlayer-0"
+              >
+                0
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="gameright commonblock player-1">
+          <div class="gameblockcontent">
+            <div>
+              <h2>Player 2</h2>
+              <div class="score secondplayerscore" id="score-1">0</div>
+            </div>
+            <div class="currentValueBlock">
+              <p>Current</p>
+              <h4
+                class="currentValue playerSecond currentvaluePlayer-1"
+                id="currentvaluePlayer-1"
+              >
+                0
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    "use strict";
+    let diceRandom = Number(Math.trunc(Math.random() * 6) + 1);
+    let diceRollBtn = document.querySelector(".diceRoll");
+    let holdBtn = document.querySelector(".holdbtn");
+    let diceImg = document.getElementById("diceBlockImg");
+    let NewGame = document.querySelector(".refreshGame");
+    let playing = true;
+    // diceRoll Function
+    let scoreEl = document.querySelector(".score");
+
+    let score = [0, 0];
+    let activePlayer = 0;
+    let currentScore = 0;
+    let playerEl0 = document.querySelector(".player-0 ");
+    let playerEl1 = document.querySelector(".player-1 ");
+
+    let switchPlayer = function () {
+      currentScore = 0;
+      document.getElementById(
+        `currentvaluePlayer-${activePlayer}`
+      ).textContent = 0;
+      activePlayer = activePlayer === 0 ? 1 : 0;
+      playerEl0.classList.toggle("active");
+      playerEl1.classList.toggle("active");
+    };
+
+    diceRollBtn.addEventListener("click", function () {
+      if (playing) {
+        let diceRandom = Number(Math.trunc(Math.random() * 6) + 1);
+        diceImg.style.display = "block";
+
+        diceImg.src = `img/dice-${diceRandom}.png`; //Dice img according to random no change
+
+        if (diceRandom !== 1) {
+          currentScore += diceRandom;
+          document.getElementById(
+            `currentvaluePlayer-${activePlayer}`
+          ).textContent = currentScore;
+        } else {
+          switchPlayer();
+        }
+      }
+    });
+
+    //clear current value
+    // let clearCurrentVal = function () {
+    //   playerFirstCurrentVal *= 0;
+    //   playerSecondCurrentVal *= 0;
+    //   document.querySelector(".playerSecond").textContent = 0;
+    //   document.querySelector(".playerFirst").textContent = 0;
+    // };
+
+    // hold button Function
+
+    holdBtn.addEventListener("click", function () {
+      if (playing) {
+        score[activePlayer] += currentScore;
+        document.getElementById(`score-${activePlayer}`).textContent =
+          score[activePlayer];
+
+        if (score[activePlayer] >= 20) {
+          confetti.start();
+
+          playing = false;
+          document
+            .querySelector(`.player-${activePlayer}`)
+            .classList.add("winner");
+          document
+            .querySelector(`.player-${activePlayer}`)
+            .classList.remove("active");
+          diceImg.style.display = "none";
+        } else {
+          switchPlayer();
+        }
+      }
+    });
+    let NewGameFunction = function () {
+      confetti.stop();
+      playing = true;
+      currentScore = 0;
+      document.getElementById("score-0").textContent = 0;
+      document.getElementById("score-1").textContent = 0;
+
+      document.getElementById(
+        `currentvaluePlayer-${activePlayer}`
+      ).textContent = 0;
+      document
+        .querySelector(`.player-${activePlayer}`)
+        .classList.remove("winner");
+      document.querySelector(`.player-0`).classList.add("active");
+      diceImg.style.display = "none";
+      diceImg.src = `img/dice-1.png`;
+      playerEl0.classList.add("active");
+      playerEl1.classList.remove("active");
+      activePlayer = 0;
+    };
+
+    // winner animation effect script
+
+    var confetti = {
+      maxCount: 150,
+      speed: 2,
+      frameInterval: 15,
+      alpha: 1,
+      gradient: !1,
+      start: null,
+      stop: null,
+      toggle: null,
+      pause: null,
+      resume: null,
+      togglePause: null,
+      remove: null,
+      isPaused: null,
+      isRunning: null,
+    };
+    !(function () {
+      (confetti.start = s),
+        (confetti.stop = w),
+        (confetti.toggle = function () {
+          e ? w() : s();
+        }),
+        (confetti.pause = u),
+        (confetti.resume = m),
+        (confetti.togglePause = function () {
+          i ? m() : u();
+        }),
+        (confetti.isPaused = function () {
+          return i;
+        }),
+        (confetti.remove = function () {
+          stop(), (i = !1), (a = []);
+        }),
+        (confetti.isRunning = function () {
+          return e;
+        });
+      var t =
+          window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          window.oRequestAnimationFrame ||
+          window.msRequestAnimationFrame,
+        n = [
+          "rgba(30,144,255,",
+          "rgba(107,142,35,",
+          "rgba(255,215,0,",
+          "rgba(255,192,203,",
+          "rgba(106,90,205,",
+          "rgba(173,216,230,",
+          "rgba(238,130,238,",
+          "rgba(152,251,152,",
+          "rgba(70,130,180,",
+          "rgba(244,164,96,",
+          "rgba(210,105,30,",
+          "rgba(220,20,60,",
+        ],
+        e = !1,
+        i = !1,
+        o = Date.now(),
+        a = [],
+        r = 0,
+        l = null;
+
+      function d(t, e, i) {
+        return (
+          (t.color =
+            n[(Math.random() * n.length) | 0] + (confetti.alpha + ")")),
+          (t.color2 =
+            n[(Math.random() * n.length) | 0] + (confetti.alpha + ")")),
+          (t.x = Math.random() * e),
+          (t.y = Math.random() * i - i),
+          (t.diameter = 10 * Math.random() + 5),
+          (t.tilt = 10 * Math.random() - 10),
+          (t.tiltAngleIncrement = 0.07 * Math.random() + 0.05),
+          (t.tiltAngle = Math.random() * Math.PI),
+          t
+        );
+      }
+
+      function u() {
+        i = !0;
+      }
+
+      function m() {
+        (i = !1), c();
+      }
+
+      function c() {
+        if (!i)
+          if (0 === a.length)
+            l.clearRect(0, 0, window.innerWidth, window.innerHeight), null;
+          else {
+            var n = Date.now(),
+              u = n - o;
+            (!t || u > confetti.frameInterval) &&
+              (l.clearRect(0, 0, window.innerWidth, window.innerHeight),
+              (function () {
+                var t,
+                  n = window.innerWidth,
+                  i = window.innerHeight;
+                r += 0.01;
+                for (var o = 0; o < a.length; o++)
+                  (t = a[o]),
+                    !e && t.y < -15
+                      ? (t.y = i + 100)
+                      : ((t.tiltAngle += t.tiltAngleIncrement),
+                        (t.x += Math.sin(r) - 0.5),
+                        (t.y +=
+                          0.5 * (Math.cos(r) + t.diameter + confetti.speed)),
+                        (t.tilt = 15 * Math.sin(t.tiltAngle))),
+                    (t.x > n + 20 || t.x < -20 || t.y > i) &&
+                      (e && a.length <= confetti.maxCount
+                        ? d(t, n, i)
+                        : (a.splice(o, 1), o--));
+              })(),
+              (function (t) {
+                for (var n, e, i, o, r = 0; r < a.length; r++) {
+                  if (
+                    ((n = a[r]),
+                    t.beginPath(),
+                    (t.lineWidth = n.diameter),
+                    (i = n.x + n.tilt),
+                    (e = i + n.diameter / 2),
+                    (o = n.y + n.tilt + n.diameter / 2),
+                    confetti.gradient)
+                  ) {
+                    var l = t.createLinearGradient(e, n.y, i, o);
+                    l.addColorStop("0", n.color),
+                      l.addColorStop("1.0", n.color2),
+                      (t.strokeStyle = l);
+                  } else t.strokeStyle = n.color;
+                  t.moveTo(e, n.y), t.lineTo(i, o), t.stroke();
+                }
+              })(l),
+              (o = n - (u % confetti.frameInterval))),
+              requestAnimationFrame(c);
+          }
+      }
+
+      function s(t, n, o) {
+        var r = window.innerWidth,
+          u = window.innerHeight;
+        window.requestAnimationFrame =
+          window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          window.oRequestAnimationFrame ||
+          window.msRequestAnimationFrame ||
+          function (t) {
+            return window.setTimeout(t, confetti.frameInterval);
+          };
+        var m = document.getElementById("confetti-canvas");
+        null === m
+          ? ((m = document.createElement("canvas")).setAttribute(
+              "id",
+              "confetti-canvas"
+            ),
+            m.setAttribute(
+              "style",
+              "display:block;z-index:999999;pointer-events:none;position:fixed;top:0"
+            ),
+            document.body.prepend(m),
+            (m.width = r),
+            (m.height = u),
+            window.addEventListener(
+              "resize",
+              function () {
+                (m.width = window.innerWidth), (m.height = window.innerHeight);
+              },
+              !0
+            ),
+            (l = m.getContext("2d")))
+          : null === l && (l = m.getContext("2d"));
+        var s = confetti.maxCount;
+        if (n)
+          if (o)
+            if (n == o) s = a.length + o;
+            else {
+              if (n > o) {
+                var f = n;
+                (n = o), (o = f);
+              }
+              s = a.length + ((Math.random() * (o - n) + n) | 0);
+            }
+          else s = a.length + n;
+        else o && (s = a.length + o);
+        for (; a.length < s; ) a.push(d({}, r, u));
+        (e = !0), (i = !1), c(), t && window.setTimeout(w, t);
+      }
+
+      function w() {
+        e = !1;
+      }
+    })();
+    // custom js
+  </script>
+</html>

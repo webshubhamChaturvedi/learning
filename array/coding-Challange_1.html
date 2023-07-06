@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body></body>
+  <script>
+    "use strict";
+    let julieData = [3, 5, 2, 12, 7];
+
+    let kateData = [4, 1, 15, 8, 3];
+
+    let newjuliData = julieData.slice(1, -2);
+
+    let combinedDogArray = [...newjuliData, ...kateData];
+    console.log(combinedDogArray);
+
+    // let checkDogs = function (dogsJulia, dogsKate) {
+    //   let age = 0;
+    //   let ageK = 0;
+    //   for (let dogj of dogsJulia) {
+    //     age += dogj;
+    //   }
+    //   for (let dogK of dogsKate) {
+    //     ageK += dogK;
+    //   }
+    //   console.log(age);
+    //   console.log(ageK);
+    // };
+    // checkDogs(newjuliData, kateData);
+
+    let checkDogs = function (dogs) {
+      dogs.forEach((elm, i) => {
+        let value =
+          elm > 3
+            ? `Dog number ${i + 1} is an adult, and is ${elm} years old`
+            : `Dog number ${i + 1} still a puppy, and is ${elm} years old`;
+        console.log(value);
+      });
+    };
+    checkDogs(combinedDogArray);
+  </script>
+</html>

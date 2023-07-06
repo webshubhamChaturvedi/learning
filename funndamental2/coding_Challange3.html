@@ -1,0 +1,27 @@
+<script>
+let Mark={
+    fullName:'Mark Miller',
+    mass:78,
+    height:1.69,
+    markBmi:function(){
+      return (this.mass)/this.height**2  
+    }
+}
+let john={
+    fullName:'John Smith',
+    mass:92,
+    height:1.95,
+    johnBmi:function(){
+      return (this.mass)/this.height**2  
+    }
+}
+let johnBmiCal=john.johnBmi();
+let markBmiCal=Mark.markBmi();
+
+console.log(markBmiCal,johnBmiCal)
+
+let result=(johnBmiCal>markBmiCal)? `John's BMI ${johnBmiCal} is higher than Mark's ${markBmiCal}`: `Mark's BMI ${markBmiCal} is higher than John's ${johnBmiCal}`
+
+console.log(result);
+
+</script>

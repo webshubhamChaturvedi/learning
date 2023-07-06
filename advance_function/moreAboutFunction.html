@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <body></body>
+  <script>
+    "Use Strict";
+
+    //default argument in function
+    let flightarr = [];
+    let flights = function (flighno, pass = 1, fair = pass * 600) {
+      let flighnocor = flighno.toUpperCase();
+      let output = {
+        flighno,
+        pass,
+        fair,
+      };
+      flightarr.push(output);
+    };
+    console.log(flightarr);
+
+    flights("irh1");
+    flights("lh12", "3");
+
+    console.warn("primitive and object work in function"); //
+
+    let flight = "LH123";
+    const jonas = {
+      name: "Shubham",
+      passport: "1324525262",
+    };
+    const checkpass = function (passno, nameobj) {
+      passno = "LH21315";
+      nameobj.passport = Math.trunc(Math.random() * 100000);
+      nameobj.name = "Mr." + nameobj.name;
+      if (jonas.passport === 1324525262) {
+        console.log("pass Ok");
+      } else {
+        console.log("pass no ok");
+      }
+    };
+
+    checkpass(flight, jonas);
+    console.log(jonas.passport, jonas.name); //its changes bcoz of the refrence
+    console.log(flight); //not chnage bcoz of primitive data type
+
+    //make a higher order function
+    let onword = function (str) {
+      return str.replace(/ +/g, "").toLowerCase();
+    };
+    let CapsFun = function (str) {
+      let [first, ...othr] = str.split(" ");
+      return [first.toUpperCase(), ...othr].join(" ");
+    };
+
+    let transform = function (str, fn) {
+      console.log(`Transform:${str}`);
+      console.log(`Transform function:${fn(str)}`);
+      console.log(`Transform function name :${fn.name}`);
+    }; //higher order func
+
+    transform("javascriPT is good lang", CapsFun);
+    transform("javascriPT is good lang", onword);
+
+    //pass function as return
+
+    let greet = function (val) {
+      return function (valnew) {
+        let greetval = `${val} ${valnew}`;
+        // console.log(greetval);
+        document.body.append(document.createElement("p"));
+        document.querySelector("p").textContent =
+          document.querySelector("p").textContent + "  " + greetval;
+      };
+    };
+
+    let greeter = greet("hello");
+    greeter("shubham");
+    greeter("hh");
+
+    //above function with arrow
+
+    let greetArrow = (param) => (param2) => `${param}  ${param2}`;
+    document.body.append(document.createElement("h1"));
+    document.querySelector("h1").textContent = greetArrow("Hello")("Shubham");
+    // greeter("Bro");
+
+    //this keyword in object
+    let airIndia = {
+      airname: "AIR INDIA",
+      seat: "EC",
+      bookings: [],
+      book: function (flightno, name) {
+        this.bookings.push({
+          flight: `${this.airname} ${this.seat}${flightno} ${name} `,
+        });
+        return `${name} booked your flight in ${this.airname}  at the seat no of ${this.seat}${flightno}`;
+      },
+      countData: [],
+      count() {
+        let add = 10 + 20;
+        this.countData.push(add);
+        return add;
+      },
+
+      //   book(flightno, name) {
+      //     this.bookings.push({
+      //       flight: `${this.airname} ${this.seat}${flightno} ${name} `,
+      //     });
+      //     return `${name} booked your flight in ${this.airname}  at the seat no of ${this.seat}${flightno}`;
+      //   },
+    };
+
+    let KatarAirlines = {
+      airname: "Katar Airlines",
+      seat: "TY",
+      bookings: [],
+      countData: [],
+    };
+    let DubaiAirline = {
+      airname: "Dubai Airlines",
+      seat: "DA",
+      bookings: [],
+    };
+    let bookFun = airIndia.book;
+
+    let countmet = airIndia.count;
+
+    console.log(countmet.call(KatarAirlines));
+    console.log(countmet.call(KatarAirlines));
+
+    console.log(KatarAirlines);
+
+    console.log(bookFun.call(KatarAirlines, 224, "Samir")); //Call method used for call the mehtod  from one object to another object
+    console.log(bookFun.call(airIndia, 208, "Abdul"));
+
+    console.log(airIndia.book(634, "Shubham"));
+    console.log(airIndia.book(661, "Rafi"));
+
+    console.log(KatarAirlines.bookings);
+    console.log(airIndia.bookings);
+
+    //Apply method is also use for same , but in apply we use the array for argument
+
+    let flightdata = [33, "manish"];
+
+    console.log(bookFun.apply(KatarAirlines, flightdata)); //apply menthod  (insted of apply methid we can use call method with spread opr)
+    console.log(bookFun.call(KatarAirlines, ...flightdata));
+
+    //bind method
+    let dubaifun = bookFun.bind(DubaiAirline);
+    let katarfun = bookFun.bind(KatarAirlines);
+
+    console.log(dubaifun(201, "Shubham"));
+    console.log(katarfun(188, "Anuj"));
+
+    //Example of call, Apply and Bind Method
+    let brrowbook = function (book) {
+      console.log(`${this.name} is Brrow the Book: ${book}`);
+    };
+    let brrowbookApply = function (book1, book2 = "Ignore") {
+      console.log(`${this.name} is Brrow the Book: ${book1} and ${book2}`);
+    };
+    let studentA = {
+      name: "Ramesh",
+    };
+
+    let studentB = {
+      name: "Sumesh",
+    };
+    brrowbook.call(studentA, "My love Strory");
+    brrowbook.call(studentB, "The Night of Vision");
+    brrowbookApply.apply(studentA, ["My first Girlfriend", "The hero"]);
+    brrowbookApply.apply(studentB, ["Sunshine", "Mystry"]);
+    let studentAfinal = brrowbook.bind(studentA, "Hello ruhi");
+    let studentBfinal = brrowbookApply.bind(studentB, "Physics", "Amar");
+    studentAfinal();
+    studentBfinal();
+
+    let arra = [1, 2, 3]; //If we want to add an array into fisrt array without changing the first array
+    let arrB = [4, 6, 7];
+    arra.push.apply(arra, arrB);
+    console.log(arra);
+
+    const addtax = function (rate) {
+      return function (value) {
+        console.log(`${value + value * rate}`);
+      };
+    };
+    let taxVat = addtax(0.23); //return a function
+    taxVat(100);
+
+    //immediatelty invocked function expression
+    (function () {
+      console.log("Hello");
+    })();
+
+    //==========Closure
+    //cloosure is creted  automatically,it is a internal property of function,we can only take a look of closure.
+    const secureBooking = function () {
+      let person = "Shubham";
+      let age = 28;
+      return function printName() {
+        let profession = "FrontEnd Dev";
+        console.log(`${person} is ${age} year ${profession}`);
+      };
+    };
+    let bookingVar = secureBooking();
+    bookingVar();
+    console.dir(bookingVar);
+
+    // const serureBokkingInc = function () {
+    //   let passcount = 0;
+    //   return function () {
+    //     passcount++;
+    //     console.log(`${passcount}:Passanger`);
+    //     return passcount;
+    //   };
+    // };
+    // let newCount = serureBokkingInc();
+    // newCount();
+    // newCount();
+    // newCount();
+
+    const bookPass = function (pas, wait) {
+      let newpas = pas / 4;
+      setTimeout(() => {
+        console.log(
+          `${newpas} pass is wait for ${wait} min for take off the plane`
+        );
+      }, wait * 1000);
+    };
+    bookPass(180, 3);
+  </script>
+</html>
