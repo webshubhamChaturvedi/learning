@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn">Abc</button>
+    <button class="btn">hi</button>
+  </body>
+  <script>
+    "use strict";
+
+    const MyName = function (name, age) {
+      this.name = name;
+      this.age = age;
+      this.childAge = () => {
+        return age * 2;
+      };
+    };
+
+    const amitvar = new MyName("amit", 29);
+
+    console.log(amitvar.childAge());
+    console.log(amitvar.name);
+
+    const buttons = document.getElementsByClassName("btn");
+
+    for (const button of buttons) {
+      button.addEventListener("click", function () {
+        this.innerText = "Btn Clicked";
+      });
+    }
+    const myfunction = (a) => {
+      console.log(a.id);
+    };
+
+    // myfunction(2, 3);
+    const Person = function (name, sname) {
+      this.name = name;
+      this.sname = sname;
+    };
+
+    const consFun = new Person("Shubham", "Chaturvedi");
+    const consFun2 = new Person("Shubham", "Chaturvedi");
+
+    consFun.name = "Anu";
+
+    console.log(consFun, consFun2);
+    // const duparr = [];
+    // for (let i = 0; i < array.length; i++) {
+    //   for (let j = 0; j < array.length; j++) {
+    //     if (array[i] > array[j] && !duparr.includes(array[i])) {
+    //       duparr.push(array[i]);
+    //     }
+    //   }
+    // }
+    // console.log(duparr);
+    // this;
+    let array = [2, 5, 6, 2, 3, 5];
+    Array.prototype.unique = function () {
+      return [...new Set(this)];
+    };
+    console.log(array);
+  </script>
+</html>

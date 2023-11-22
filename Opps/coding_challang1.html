@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      //   method 1 use method inside the class or constuctor function
+
+      //   const Car = function (make, speed) {
+      //     this.make = make;
+      //     this.speed = `${speed} km/h`;
+      //     this.acc = function () {
+      //       return (this.speed = `${parseFloat(this.speed) + 10} km/h`);
+      //     };
+      //     this.brake = function () {
+      //       return (this.speed = `${parseFloat(this.speed) - 5} km/h`);
+      //     };
+      //   };
+
+      //   method 2 , where we can make a method outside , the class , by using prototype -prefeered method
+      const Car = function (make, speed) {
+        this.make = make;
+        this.speed = `${speed} km/h`;
+      };
+
+      Car.prototype.acc = function () {
+        return (this.speed = `${parseFloat(this.speed) + 10} km/h`);
+      };
+      Car.prototype.brake = function () {
+        return (this.speed = `${parseFloat(this.speed) - 5} km/h`);
+      };
+
+      const car1 = new Car("BMW", 120);
+      const car2 = new Car("Mercedes", 95);
+      console.log(car1);
+      console.log(car2.brake());
+      console.log(car2.acc());
+    </script>
+  </body>
+</html>

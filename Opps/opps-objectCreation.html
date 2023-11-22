@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="myname">
+      <h2>Dom Elm</h2>
+
+      <h3 class="h3">Dome H3</h3>
+    </div>
+    <!-- <div class="myname2">
+      <h2>Dom Elm</h2>
+      <h3 class="h3">Dome H3</h3>
+    </div> -->
+    <script>
+      "use strict";
+      const Person = function (name, birthyear) {
+        this.name = name;
+        this.birthyear = birthyear;
+        // this.Combineboth = function () {
+        //   const currentyear = 2023;
+        //   return currentyear - birthyear;
+        // };
+      };
+
+      Person.prototype.Combineboth = function () {
+        const currentyear = 2023;
+        return currentyear - this.birthyear;
+      };
+
+      const person1 = new Person("Amit", 1991);
+      console.log(person1);
+      console.log(`${person1.birthyear} is ${person1.name}'s birthday ${name}`);
+      console.log(person1.Combineboth());
+      const testobj = {
+        test: "Javascript",
+        date: "Friday",
+      };
+      console.log(person1.__proto__);
+
+      let div = document.querySelector("div");
+      let divall = document.querySelectorAll("div");
+      // divall.forEach((arry, ind) => {
+      //   arry.addEventListener("click", () => {
+      //     divall.forEach((otherDiv) => {
+      //       otherDiv.classList.remove("working");
+      //     });
+      //     arry.classList.add("working");
+      //   });
+      // });
+
+      let h3 = document.getElementsByClassName("h3");
+      h3[0].addEventListener("click", function () {
+        h3[0].classList.add("working");
+      });
+      // let h3 = document.("h3");
+
+      // div.removeAttribute("class");
+      console.dir(h3);
+      console.dir(div);
+      console.dir(divall);
+      // console.dir(h3);
+      //ES6 Method
+
+      class PersonCl {
+        constructor(name, birthyear) {
+          this.name = name;
+          this.birthyear = birthyear;
+        }
+        calcage() {
+          return 2023 - this.birthyear;
+        }
+      }
+      const shubham = new PersonCl("Shubham", 1995);
+      console.log(shubham.calcage());
+
+      const arra = document.getElementsByClassName("h2");
+      console.log(Array.from(arra));
+    </script>
+  </body>
+</html>
