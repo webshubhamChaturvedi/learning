@@ -120,10 +120,11 @@
         </div>
         <div class="rightBlock">
           <p id="numvalue">Start Guessing...</p>
-          <p class="mt-3">Chance: <span id="countervalue">20</span></p>
+          <p class="mt-3">Chance: <span id="countervalue">6</span></p>
           <p class="mt-3">Highest Score: <span id="Highestscore"></span></p>
         </div>
       </div>
+      <!-- <button type="button" class="btnnn" onclick="abc()">Click Me!</button> -->
     </div>
   </body>
 
@@ -148,7 +149,7 @@
     let errrcode = function (errormsg) {
       document.querySelector(".error").textContent = errormsg;
     };
-    let count = 19;
+    let count = 6;
     function counter() {
       if (count > 0) {
         return count--;
@@ -169,7 +170,7 @@
     let refreshAll = function () {
       document.querySelector("body").classList.remove("winner");
       userInput.value = "";
-      count = 20;
+      count = 6;
       counterNumber.innerHTML = count;
       document.querySelector("body").style.backgroundColor = "";
       document.getElementById("boxValue").innerHTML = "?";

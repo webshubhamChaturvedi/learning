@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="US-en">
+  <head>
+    <title>Dom manupulation</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <style>
+         body{font-size: 18px;font-family: Arial, Helvetica, sans-serif;}
+         body>h1{text-align: center;}
+    </style>
+  </head>
+  <body>
+    <h1>Dom Manupulation by Different Selector</h1>
+    <div class="block">
+      <p class="p">
+          1-When We access the dom element as a collection , like we say if we
+          want to access all p tag or all tag have same class , so we can use
+          diffrent method like -
+         
+           <br><br> <strong>document.getElementsByClassName("classname")</strong> or -Give HtmlCollection
+           <br><br>  <strong> document.getElementsByTagName("p")</strong> or -Give HtmlCollection
+           <br><br> <strong>document.querySelectorAll("quaryname")</strong> -Give nodelist
+          ></strong>
+          <br><br><br>
+      <p class="p">
+        2-if we access the element by querySelectorAll so we access  all the (element have same class or same tag or same attribute) and its gives the <strong>
+            
+            NodeList as an output </strong>- NodeList don't have the inbuild forEach or map etc method . so we can't apply thse method directly , we have to change the nodeList and HtmlCollection into the array by using <strong>Destructuring [...nodeList]</strong> or <strong>Array from method, Array.from(HtmlCollection)</strong>
+        </strong>
+      </p>
+      <p class="p">
+        3- And When we Access the elemnt by using  document.getElementsByClassName("classname") or  document.getElementsByTagName("p") it give the HtmlCollection which don't have any inbuild method so we have to convert it in array and after that we can apply the array method on it 
+      </p>
+      <p class="p" id="p">
+        <strong>IMPORTANT :</strong>
+        If we want to access the element without changing the NodeList and HtmlCollection into the Array ,so we have to use the for loop:
+      </p>
+      <code><strong></strong>(let i=0;i<=arr.length;i++){console.log(arr[i])}</code>
+      <div>
+        <p class="p">
+            <strong>IMPORTANT:</strong>
+            when using methods like getElementsByClassName, getElementsByTagName, and getElementsByName, the result is a <strong> live collection.
+                If the DOM changes
+            </strong>, the collection will automatically update to reflect those changes. querySelector and querySelectorAll return  <strong> static collections,</strong> and they won't automatically update if the DOM changes after the selection.
+        </p>
+      </div>
+    </div>
+    <!-- <input name="username" /> -->
+    <script type="text/javascript">
+      //by querySelector ---- nodelist
+     
+      let newp=Array.from(allp)
+      console.log(allp);
+      let remcolo=""
+      newp.forEach((item)=>{
+      item.addEventListener("click",(e)=>{
+      if(remcolo){
+        remcolo.style.color=""
+      }
+      e.target.style.color="blue"
+      remcolo=e.target
+      })
+      item.style.cursor="pointer"
+      })
+
+    </script>
+  </body>
+</html>

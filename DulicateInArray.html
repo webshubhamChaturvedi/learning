@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="us">
+  <head>
+    <title>Duplicate From Array</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div class="dupliacteNo">
+      <h1>Find Duplicate No in Array By diffrent Methos</h1>
+
+      <code> const array = [-3, 5, 6, 4, 20, 10, 2, 3, 4, 10]; </code>
+
+      <code class="newcode"></code>
+    </div>
+
+    <script>
+      const array = [-3, 5, 6, 4, 20, 10, 2, 3, 4, 10];
+      let duplicate = [];
+      for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+          if (array[i] !== array[j] && !duplicate.includes(array[i])) {
+            duplicate.push(array[i]);
+          }
+        }
+      }
+      console.log(duplicate);
+      document.querySelector(".newcode").innerHTML = duplicate;
+
+      const dup = array.filter((arr, i) => {
+        return array.indexOf(arr) !== i && array.lastIndexOf(arr) === i;
+      });
+      console.log(dup);
+
+      const dupli = [...new Set(array)];
+      console.log(dupli);
+    </script>
+  </body>
+</html>

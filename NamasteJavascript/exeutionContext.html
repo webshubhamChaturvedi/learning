@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Namaste Javascript</title>
+  </head>
+  <body></body>
+  <script>
+    // var num = 2;
+    // function square(n) {
+    //   var ans = n * n;
+    //   return ans;
+    // }
+
+    // var arrow = (n) => {
+    //   return n * n;
+    // };
+
+    // var num1 = square(3);
+    // var num2 = square(4);
+
+    // console.log(num, num1, num2);
+
+    // var x = 1;
+
+    // a();
+    // b();
+    // console.log(x);
+    // function a() {
+    //   // x = 10;
+    //   console.log(x);
+    // }
+    // function b() {
+    //   var x = 100;
+    //   console.log(x);
+    // }
+    var text = "outside";
+    function logIt() {
+      console.log(text);
+      var text = "inside";
+    }
+    logIt();
+
+    // second question
+
+    let friend = "Jennifer";
+
+    function getFriend() {
+      console.log(friend);
+
+      let enemy = "Peter";
+
+      return function getEnemy() {
+        console.log(enemy);
+      };
+    }
+
+    getFriend();
+
+    // "Jennifer"  "Peter"
+
+    console.log(a);
+    {
+      var a = 10;
+    }
+    console.log(a);
+
+    //Clousere
+
+    function outer() {
+      var a = 10;
+      return function inner() {
+        console.log(a);
+      };
+    }
+    var y = outer();
+    y();
+
+    // for (var i = 0; i <= 5; i++) {
+    //   function ab(param) {
+    //     setTimeout(() => {
+    //       console.log(param);
+    //     }, param * 1000);
+    //   }
+    //   ab(i);
+    // }
+    // async function fetchapi() {
+    //   let data = await fetch("https://dummyjson.com/products/1");
+    //   let jsondata = await data.json();
+    //   console.log(jsondata, "abc");
+    // }
+    // fetchapi();
+
+    // const newdata = async function () {
+    //   const data = await fetch("https://dummyjson.com/products/1");
+    //   const mydata = await data.json();
+    //   return mydata;
+    // };
+    // console.log(newdata());
+
+    // async function abc() {
+    //   const aa = await fetch("https://dummyjson.com/products/1");
+    //   const nnn = await aa.json();
+    //   return nnn;
+    // }
+
+    // abc().then((data) => {
+    //   const listItems = data?.images.map((val) => `<li>${val}</li>`);
+    //   const htmlString = `<ul>${listItems.join("")}</ul>`;
+    //   console.log(htmlString);
+
+    // });
+    const abc = fetch("https://dummyjson.com/products/1")
+      .then((data) => data.json())
+      .then((res) => {
+        const list = res?.images.map((val, key) => {
+          return `<li>${val}</li>`;
+        });
+        const abc = document.createElement("ul");
+        document.body.appendChild(abc);
+        document.querySelector("ul").insertAdjacentHTML("afterbegin", list);
+        // return res;
+      });
+
+    let radius = [2, 3, 4];
+
+    const area = function (ra) {
+      let area = 2 * Math.PI * ra;
+      return area;
+    };
+    const circumf = function (ra) {
+      let area = Math.PI * ra * ra;
+      return area;
+    };
+    const calculate = function (raduis, logic) {
+      const op = [];
+      for (let i = 0; i < radius.length; i++) {
+        op.push(logic(radius[i]));
+      }
+      return op;
+    };
+    console.log(calculate(radius, area));
+    console.log(calculate(radius, circumf));
+
+    let array = [-3, 10, 3, 4];
+
+    function large() {
+      for (let i = 0; i < array.length; i++) {
+        let max = 0;
+
+        if (array[i] > max) {
+          max = array[i];
+        }
+        return max;
+      }
+    }
+    // large(array);
+    console.log(large(array));
+    //   const a=fetch("abc");
+    //   a.then(function(data){
+    // console.log(data);
+    //   })
+  </script>
+</html>
