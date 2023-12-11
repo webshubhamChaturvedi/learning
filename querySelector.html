@@ -19,7 +19,9 @@
            <br><br> <strong>document.getElementsByClassName("classname")</strong> or -Give HtmlCollection
            <br><br>  <strong> document.getElementsByTagName("p")</strong> or -Give HtmlCollection
            <br><br> <strong>document.querySelectorAll("quaryname")</strong> -Give nodelist
-          ></strong>
+           <br><br> <strong>document.querySelector("quaryname")</strong> -Give first match element
+
+        </strong>
           <br><br><br>
       <p class="p">
         2-if we access the element by querySelectorAll so we access  all the (element have same class or same tag or same attribute) and its gives the <strong>
@@ -47,20 +49,24 @@
     <!-- <input name="username" /> -->
     <script type="text/javascript">
       //by querySelector ---- nodelist
-     
-      let newp=Array.from(allp)
-      console.log(allp);
-      let remcolo=""
-      newp.forEach((item)=>{
-      item.addEventListener("click",(e)=>{
-      if(remcolo){
-        remcolo.style.color=""
-      }
-      e.target.style.color="blue"
-      remcolo=e.target
-      })
-      item.style.cursor="pointer"
-      })
+    // let allp=document.querySelectorAll("p")
+    //   let newp=Array.from(allp)
+
+    //   let remcolo=""
+    //   newp.forEach((item)=>{
+    //   item.addEventListener("click",(e)=>{
+    //   if(remcolo){
+    //     remcolo.style.color=""
+    //   }
+    //   e.target.style.color="blue"
+    //   remcolo=e.target
+    //   })
+    //   item.style.cursor="pointer"
+    //   })
+
+let singlep=document.getSelection("p")
+console.log(singlep);
+
 
     </script>
   </body>
