@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="US-en">
+  <head>
+    <title>Dom width and all style</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        margin-bottom: 0.3rem;
+        box-sizing: border-box;
+      }
+      body {
+        font-size: 1.3rem;
+        padding: 1%;
+      }
+      /* .innerbox {
+        width: 300px;
+        overflow: auto;
+      } */
+      .box {
+        width: 600px;
+        height: 100px;
+        background-color: aqua;
+        padding: 10px;
+      }
+      div {
+        margin-bottom: 1rem;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dom Diffrent Width</h1>
+    <div class="innerbox">
+      <div>
+        <strong>1-innerWidth:</strong> The innerWidth property only works for
+        window its always give the width of the window , this property don't
+        work for any html block or elemnt, it give undefine if we find the
+        innerWidth of any html/block
+      </div>
+      <div>
+        <strong>2-offsetWidth:</strong> The offsetWidth property returns the
+        total amount of space of an element horizontally, including the width of
+        the content, scrollbars (if any), padding, and border. but don't
+        calculate the margin.
+      </div>
+      <div>
+        <strong>3-clientWidth:</strong>The clientWidth returns how much an
+        element takes up horizontally, including padding but not including the
+        border, margins, or scrollbars.
+      </div>
+      <div>
+        <strong>4-scrollWidth:</strong>The scrollWidth returns the actual size
+        of the content, regardless of how much of it is currently visible.<br />It
+        returns inner div width + inner div padding + outer div padding.
+      </div>
+      <div>
+        <strong>5-getBoundingClientRect:</strong>getBoundingClientRect gives an
+        oject which is having the information about the location and dimension
+        of the element.
+      </div>
+      <div class="box"></div>
+      <p class="calulation"></p>
+    </div>
+  </body>
+  <script type="text/javascript">
+    let Mybox = document.querySelector(".box");
+    let blockcal = document.querySelector(".calulation");
+    blockcal.textContent = Mybox.getBoundingClientRect().width;
+
+    console.log(Mybox.getBoundingClientRect().width);
+
+    //styling by using js
+    let body = document.getElementsByTagName("body");
+
+    // console.log([...bosy]);
+
+    // let newb = Array.from(bosy);
+
+    console.log(body);
+    body.style.background = "red";
+  </script>
+</html>
