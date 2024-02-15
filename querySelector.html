@@ -64,7 +64,10 @@
     //   item.style.cursor="pointer"
     //   })
 
-let singlep=document.getSelection("p")
+let singlep=document.querySelectorAll("p")
+singlep.forEach((itm)=>{
+  itm.style.color="red"
+})
 console.log(singlep);
 
 

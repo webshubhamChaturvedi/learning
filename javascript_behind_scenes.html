@@ -1,359 +1,450 @@
-<script>
-  "use strict";
+<!DOCTYPE html>
+<html lang="US-en">
+  <head>
+    <title>Js</title>
+    <style>
+      .container {
+        max-width: 80%;
+        margin: 2rem auto;
+      }
+      .container label {
+        font-weight: 600;
+        min-width: 100px;
+        display: inline-block;
+      }
+      .container ul {
+        margin: 0px;
+        padding-left: 0px;
+      }
+      .container ul li {
+        margin-bottom: 1rem;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="country"></h1>
+      <ul>
+        <li>
+          <label>Country</label>
+          <span class="country"></span>
+        </li>
+        <li>
+          <label>Continent</label>
+          <span class="continent"></span>
+        </li>
+        <li>
+          <label>Population</label>
+          <span class="population"></span>
+        </li>
+      </ul>
+    </div>
+    <script>
+      "use strict";
 
-  //Spread Oprator
+      let country = "India";
+      let continent = "Asia";
+      let population = 1.33;
+      let isIsland = true;
+      let language;
+      let countryVal = document.querySelectorAll(".country");
+      let allCountry = [...countryVal];
+      document.querySelector(".continent").textContent = continent;
+      document.querySelector(
+        ".population"
+      ).textContent = `${population} Billion`;
 
-  let Spread = [1, 4, 5, 6, 7];
+      console.log(typeof language);
+      allCountry.map((val, key) => {
+        val.innerHTML = country;
+      });
 
-  let str = "shubham";
+      let markHeight;
+      let johnHeight;
+      let markMass;
+      let johnkMass;
+      let markHigherBMI;
+      let markBmi = 78 / (1.69 * 1.69);
+      let johnBmi = 92 / (1.95 * 1.95);
+      markHigherBMI = markBmi > johnBmi;
+      console.log(markBmi, "markBmi");
+      console.log(johnBmi, "johnBmi");
+      console.log(markHigherBMI, "markHigherBMI");
+      if (markBmi > johnBmi) {
+        console.log(
+          `Mark's BMI is higher than John's! and it is ${markBmi}-Mark's and ${johnBmi}-john's`
+        );
+      } else {
+        console.log(
+          `Mark's BMI is higher than John's! and it is ${markBmi}-Mark's and ${johnBmi}-john's`
+        );
+      }
+      markBmi = 95 / (1.88 * 1.88);
+      johnBmi = 85 / (1.76 * 1.76);
+      markHigherBMI = markBmi > johnBmi;
 
-  let reverce = [...str].reverse().join("");
-  //   console.log(reverce); //Reverse the string
+      let inputYear = "1992";
+      console.log(`${+inputYear + 8}`);
 
-  let newarray = [2, 3, 4];
-  let [a1, b1, c1, d1 = 0] = [...Spread];
+      // console.log(markBmi, "markBmi");
+      // console.log(johnBmi, "johnBmi");
+      // console.log(markHigherBMI, "markHigherBMI");
+      //Spread Oprator
 
-  //   console.log([a1, b1, ...c1, d1]);
-  let [a, b, ...abc] = [1, 2, 3, 4, 5];
-  //   console.log(a, b, abc); //Rest Operater
+      let Spread = [1, 4, 5, 6, 7];
 
-  let obj = { ...Spread };
-  console.log(obj);
+      let str = "shubham";
 
-  function multi(a, b, c) {
-    return a * b * c;
-  }
+      let reverce = [...str].reverse().join("");
+      //   console.log(reverce); //Reverse the string
 
-  let multiply = multi(...Spread);
-  //   console.log(multiply);
+      let newarray = [2, 3, 4];
+      let [a1, b1, c1, d1 = 0] = [...Spread];
 
-  //   console.log(obj);
+      //   console.log([a1, b1, ...c1, d1]);
+      let [a, b, ...abc] = [1, 2, 3, 4, 5];
+      //   console.log(a, b, abc); //Rest Operater
 
-  //   function sum(v1, v2, v3) {
-  //     return v1 + v2 + v3;
-  //   }
-  //   console.log(sum(...Spread));
+      let obj = { ...Spread };
+      console.log(obj);
 
-  let arrA = [2, 4, 5];
-  let arrB = [6, 7, 8];
-  //   arrB = arrA;
-  arrB = [...arrA];
-  arrB.push(9, 10);
+      function multi(a, b, c) {
+        return a * b * c;
+      }
 
-  //   arrA = arrA.concat(arrB);
-  //   console.log(arrA);
-  //   arrA = [...arrA, ...arrB];
-  //   console.log(arrA, arrB);
+      let multiply = multi(...Spread);
+      //   console.log(multiply);
 
-  let Array = [10, 20, 30];
+      //   console.log(obj);
 
-  //   let [a, b] = Array;  //Retrive data from array
-  //   let [a, ,c] = Array;  //Retrive data but ignore the some varible
-  //   let [a = 1, b = 0, c = 0] = Array; //Using defalut value of variable
+      //   function sum(v1, v2, v3) {
+      //     return v1 + v2 + v3;
+      //   }
+      //   console.log(sum(...Spread));
 
-  //   console.log(a, b, c);
+      let arrA = [2, 4, 5];
+      let arrB = [6, 7, 8];
+      //   arrB = arrA;
+      arrB = [...arrA];
+      arrB.push(9, 10);
 
-  let object = { a: 1, b: { c: 4 } };
-  const {
-    a: vala,
-    b: { c: valc },
-  } = object;
+      //   arrA = arrA.concat(arrB);
+      //   console.log(arrA);
+      //   arrA = [...arrA, ...arrB];
+      //   console.log(arrA, arrB);
 
-  //   console.log(vala, valc);
+      let Array = [10, 20, 30];
 
-  let objectVar = {
-    Name: "Shubham",
-    BirthYear: 1994,
-    currentYear: 2023,
-    Age: function () {
-      const greet = () => console.log(`hey ${this.Name}`);
-      console.log(this.currentYear - this.BirthYear);
-      greet();
-    },
-  };
-  //   objectVar.newFun;
-  //   objectVar.Age();
-  //   console.log(objectVar.Age());
+      //   let [a, b] = Array;  //Retrive data from array
+      //   let [a, ,c] = Array;  //Retrive data but ignore the some varible
+      //   let [a = 1, b = 0, c = 0] = Array; //Using defalut value of variable
 
-  let newOb = {
-    FirstName: "Shubham",
-    LastName: "Chaturvedi",
-    Age: 29,
-  };
+      //   console.log(a, b, c);
 
-  let chnageOb = Object.assign({}, newOb);
-  chnageOb.Age = 32;
-  //   console.log(chnageOb.Age);
-  //   console.log(newOb.Age);
+      let object = { a: 1, b: { c: 4 } };
+      const {
+        a: vala,
+        b: { c: valc },
+      } = object;
 
-  //Array Desturctring
+      //   console.log(vala, valc);
 
-  let arr = [2, 6, 8, 10];
+      let objectVar = {
+        Name: "Shubham",
+        BirthYear: 1994,
+        currentYear: 2023,
+        Age: function () {
+          const greet = () => console.log(`hey ${this.Name}`);
+          console.log(this.currentYear - this.BirthYear);
+          greet();
+        },
+      };
+      //   objectVar.newFun;
+      //   objectVar.Age();
+      //   console.log(objectVar.Age());
 
-  let [arr1, arr2, , arr3] = arr;
-  //   console.log(arr1, arr2, arr3);
+      let newOb = {
+        FirstName: "Shubham",
+        LastName: "Chaturvedi",
+        Age: 29,
+      };
 
-  //   let arrnew = arr1;
-  //   arr1 = arr3;
-  //   arr3 = arrnew;
-  //   arr = [arr1, arr2, arr3];
-  //   console.log(arr);
+      let chnageOb = Object.assign({}, newOb);
+      chnageOb.Age = 32;
+      //   console.log(chnageOb.Age);
+      //   console.log(newOb.Age);
 
-  let resturent = {
-    Name: "Khana Khajana",
-    Location: "Golghar Gorakhpur",
-    Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
-    MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
-    order: function (food1, food2) {
-      return [this.Starter[food1], this.MainCourse[food2]];
-    },
-  };
+      //Array Desturctring
 
-  //   const [orderfood1, orderfood2] = resturent.order(1, 3);
-  //   console.log(orderfood1, orderfood2);
+      let arr = [2, 6, 8, 10];
 
-  //   let nesterArray = [2, 4, 5, [8, 9, 7]];
-  //   let [a, b, , [c, d, e]] = nesterArray;
-  //   console.log(a, b, c, d, e);
+      let [arr1, arr2, , arr3] = arr;
+      //   console.log(arr1, arr2, arr3);
 
-  // Array Desturctring
-  let resturentObject = {
-    Name: "Khana Khajana",
-    Location: "Golghar Gorakhpur",
-    Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
-    MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
-    order: function (food1, food2) {
-      return [this.Starter[food1], this.MainCourse[food2]];
-    },
-    Desert: ["Icecream"],
-    orderTime: {
-      Monday: {
-        StartTime: "9:00",
-        EndTime: "20:00",
-      },
-      Tuesday: {
-        StartTime: "10:00",
-        EndTime: "20:00",
-      },
-    },
-    orderSummary: function ({ Time, Location, starter, Course }) {
-      return `${Time} and location is ${Location} with starter ${this.Starter[starter]} and main course is ${this.MainCourse[Course]}`;
-    },
-  };
+      //   let arrnew = arr1;
+      //   arr1 = arr3;
+      //   arr3 = arrnew;
+      //   arr = [arr1, arr2, arr3];
+      //   console.log(arr);
 
-  let {
-    orderTime: {
-      Monday: { StartTime: openinghr },
-    },
-  } = resturentObject;
-  console.log(openinghr);
+      let resturent = {
+        Name: "Khana Khajana",
+        Location: "Golghar Gorakhpur",
+        Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
+        MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
+        order: function (food1, food2) {
+          return [this.Starter[food1], this.MainCourse[food2]];
+        },
+      };
 
-  let ordersum = resturentObject.orderSummary({
-    Time: "9",
-    Location: "Padri Bazar",
-    starter: 2,
-    Course: 1,
-  });
-  //   console.log(ordersum);
+      //   const [orderfood1, orderfood2] = resturent.order(1, 3);
+      //   console.log(orderfood1, orderfood2);
 
-  const {
-    orderTime: {
-      Tuesday: { StartTime: Time = 5 },
-      Monday: { StartTime },
-    },
-  } = resturentObject;
-  //   console.log(Time, StartTime);
+      //   let nesterArray = [2, 4, 5, [8, 9, 7]];
+      //   let [a, b, , [c, d, e]] = nesterArray;
+      //   console.log(a, b, c, d, e);
 
-  const { Name, Location } = resturentObject; //We have to use the same key name as object
-  const { Name: restname, Location: RestLoc } = resturentObject; //We can use the new varibale insted of object key, but assign this key to new varibale
-  const { Desert = [], Location: RestLoc2 = [] } = resturentObject; //using default value
-  //   console.log(Desert, RestLoc2);
+      // Array Desturctring
+      let resturentObject = {
+        Name: "Khana Khajana",
+        Location: "Golghar Gorakhpur",
+        Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
+        MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
+        order: function (food1, food2) {
+          return [this.Starter[food1], this.MainCourse[food2]];
+        },
+        Desert: ["Icecream"],
+        orderTime: {
+          Monday: {
+            StartTime: "9:00",
+            EndTime: "20:00",
+          },
+          Tuesday: {
+            StartTime: "10:00",
+            EndTime: "20:00",
+          },
+        },
+        orderSummary: function ({ Time, Location, starter, Course }) {
+          return `${Time} and location is ${Location} with starter ${this.Starter[starter]} and main course is ${this.MainCourse[Course]}`;
+        },
+      };
 
-  let restPractice = {
-    Name: "Khana Khajana",
-    Location: "Golghar Gorakhpur",
-    Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
-    MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
-    order: function (food1, food2) {
-      return [this.Starter[food1], this.MainCourse[food2]];
-    },
-    Desert: ["Icecream"],
-    orderTime: {
-      mon: {
-        StartTime: 0,
-        EndTime: "20:00",
-      },
-      tue: {
-        StartTime: "10:0",
-        EndTime: "20:00",
-      },
-      wed: {
-        StartTime: "9:30",
-        EndTime: "18:00",
-      },
-      thrus: {
-        EndTime: "18:00",
-      },
-    },
-    orderSummary: function ({ Time, Location, starter, Course }) {
-      return `${Time} and location is ${Location} with starter ${this.Starter[starter]} and main course is ${this.MainCourse[Course]}`;
-    },
-  };
-  const [Burger, , Samosa, ...rest] = [
-    ...restPractice.Starter,
-    ...restPractice.MainCourse,
-  ];
+      let {
+        orderTime: {
+          Monday: { StartTime: openinghr },
+        },
+      } = resturentObject;
+      console.log(openinghr);
 
-  let [main, , second] = restPractice.Starter;
-  console.log(main, second);
+      let ordersum = resturentObject.orderSummary({
+        Time: "9",
+        Location: "Padri Bazar",
+        starter: 2,
+        Course: 1,
+      });
+      //   console.log(ordersum);
 
-  [main, , second] = [second, , main];
+      const {
+        orderTime: {
+          Tuesday: { StartTime: Time = 5 },
+          Monday: { StartTime },
+        },
+      } = resturentObject;
+      //   console.log(Time, StartTime);
 
-  console.log(Burger, Samosa, ...rest);
-  console.log(main, second);
-  console.log(restPractice.Starter);
+      const { Name, Location } = resturentObject; //We have to use the same key name as object
+      const { Name: restname, Location: RestLoc } = resturentObject; //We can use the new varibale insted of object key, but assign this key to new varibale
+      const { Desert = [], Location: RestLoc2 = [] } = resturentObject; //using default value
+      //   console.log(Desert, RestLoc2);
 
-  const add = function (...value) {
-    let sum = 0;
-    for (let i = 0; i < value.length; i++) {
-      sum += value[i];
-    }
-    console.log(sum);
-  };
-  //   add(1, 2, 3);
-  let x = [23, 34, 56];
-  add(...x);
+      let restPractice = {
+        Name: "Khana Khajana",
+        Location: "Golghar Gorakhpur",
+        Starter: ["Burger", "Sandwitch", "Samosa", "Noodles"],
+        MainCourse: ["Malia chap", "Kofta", "Chilli Panner", "Pizza"],
+        order: function (food1, food2) {
+          return [this.Starter[food1], this.MainCourse[food2]];
+        },
+        Desert: ["Icecream"],
+        orderTime: {
+          mon: {
+            StartTime: 0,
+            EndTime: "20:00",
+          },
+          tue: {
+            StartTime: "10:0",
+            EndTime: "20:00",
+          },
+          wed: {
+            StartTime: "9:30",
+            EndTime: "18:00",
+          },
+          thrus: {
+            EndTime: "18:00",
+          },
+        },
+        orderSummary: function ({ Time, Location, starter, Course }) {
+          return `${Time} and location is ${Location} with starter ${this.Starter[starter]} and main course is ${this.MainCourse[Course]}`;
+        },
+      };
+      const [Burger, , Samosa, ...rest] = [
+        ...restPractice.Starter,
+        ...restPractice.MainCourse,
+      ];
 
-  let arr4 = [1, 2, 3];
-  let [i, m, t] = [...arr4];
-  console.log(i, m, t);
-  let myname = 0;
+      let [main, , second] = restPractice.Starter;
+      console.log(main, second);
 
-  let nameTru = myname ?? 10;
-  console.log(nameTru);
+      [main, , second] = [second, , main];
 
-  let shortCircut = null || undefined || null || 0 || false;
-  let shortCircutAnd =
-    resturentObject.Name && "Hello" && 2 && 2 && resturentObject.a;
+      console.log(Burger, Samosa, ...rest);
+      console.log(main, second);
+      console.log(restPractice.Starter);
 
-  console.log(shortCircut, shortCircutAnd);
+      const add = function (...value) {
+        let sum = 0;
+        for (let i = 0; i < value.length; i++) {
+          sum += value[i];
+        }
+        console.log(sum);
+      };
+      //   add(1, 2, 3);
+      let x = [23, 34, 56];
+      add(...x);
 
-  //example of short circuting
+      let arr4 = [1, 2, 3];
+      let [i, m, t] = [...arr4];
+      console.log(i, m, t);
+      let myname = 0;
 
-  let res1 = {
-    name: "Dominos",
-    outletNo: 20,
-  };
-  let res2 = {
-    name: "Pizzerai",
-  };
+      let nameTru = myname ?? 10;
+      console.log(nameTru);
 
-  // res2.outletNo = res2.outletNo || res1.outletNo;
-  //logical or
+      let shortCircut = null || undefined || null || 0 || false;
+      let shortCircutAnd =
+        resturentObject.Name && "Hello" && 2 && 2 && resturentObject.a;
 
-  // or assignment oprator
-  res2.outletNo ||= res1.outletNo; //we can write the 244 line code as this
-  res2.outletNo = 30;
-  res1.outletNo ||= res2.outletNo;
-  console.log(res1, res2);
-  let data1 = [17, 21, 23];
-  let Data2 = [12, 5, -5, 0, 4];
+      console.log(shortCircut, shortCircutAnd);
 
-  let printForecast = function (arr) {
-    let temp;
+      //example of short circuting
 
-    for (i = 0; i < arr.length; i++) {
-      temp = arr[i];
-      console.log(`The temp of day ${i + 1}  is  ${temp}C`);
-    }
-  };
-  // printForecast(data1);
-  printForecast(Data2);
+      let res1 = {
+        name: "Dominos",
+        outletNo: 20,
+      };
+      let res2 = {
+        name: "Pizzerai",
+      };
 
-  const game = {
-    players: [
-      [
-        "Neuer",
-        "Pavard",
-        "Martinez",
-        "Alaba",
-        "Davies",
-        "Kimmich",
-        "Goretzka",
-        "Coman",
-        "Muller",
-        "Gnarby",
-        "Lewandowski",
-      ],
-      [
-        "Burki",
-        "Schulz",
-        "Hummels",
-        "Akanji",
-        "Hakimi",
-        "Weigl",
-        "Witsel",
-        "Hazard",
-        "Brandt",
-        "Sancho",
-        "Gotze",
-      ],
-    ],
-  };
+      // res2.outletNo = res2.outletNo || res1.outletNo;
+      //logical or
 
-  const [aar2, [...ab]] = game.players;
+      // or assignment oprator
+      res2.outletNo ||= res1.outletNo; //we can write the 244 line code as this
+      res2.outletNo = 30;
+      res1.outletNo ||= res2.outletNo;
+      console.log(res1, res2);
+      let data1 = [17, 21, 23];
+      let Data2 = [12, 5, -5, 0, 4];
 
-  console.log(...aar2, ...ab);
+      let printForecast = function (arr) {
+        let temp;
 
-  // for of loop and optional chaining
+        for (i = 0; i < arr.length; i++) {
+          temp = arr[i];
+          console.log(`The temp of day ${i + 1}  is  ${temp}C`);
+        }
+      };
+      // printForecast(data1);
+      printForecast(Data2);
 
-  const days = ["mon", "tue", "wed", "thrus", "fri"];
+      const game = {
+        players: [
+          [
+            "Neuer",
+            "Pavard",
+            "Martinez",
+            "Alaba",
+            "Davies",
+            "Kimmich",
+            "Goretzka",
+            "Coman",
+            "Muller",
+            "Gnarby",
+            "Lewandowski",
+          ],
+          [
+            "Burki",
+            "Schulz",
+            "Hummels",
+            "Akanji",
+            "Hakimi",
+            "Weigl",
+            "Witsel",
+            "Hazard",
+            "Brandt",
+            "Sancho",
+            "Gotze",
+          ],
+        ],
+      };
 
-  for (const day of days) {
-    let openinghrs = restPractice.orderTime?.[day]?.StartTime ?? "Not Open";
-    console.log(`${day} is opening hr is ${openinghrs}`);
-  }
-  console.log(restPractice.order?.(1, 2) ?? "Method not exist");
+      const [aar2, [...ab]] = game.players;
 
-  // const openingHours = {
-  //   [days[2]]: {
-  //     open: 12,
-  //     close: 22,
-  //   },
-  //   [days[4]]: {
-  //     open: 9,
-  //     close: 18,
-  //   },
-  //   [days[1]]: {
-  //     open: 10,
-  //     close: 18,
-  //   },
-  // };
-  let Properties = Object.keys(restPractice.orderTime);
-  let restopen = `The Resturent is open at ${Properties.length} days `;
+      console.log(...aar2, ...ab);
 
-  for (const day of Properties) {
-    restopen += `${day},`;
-  }
-  console.log(restopen);
-  let objectValue = Object.values(restPractice.orderTime);
-  console.log(objectValue);
-  let objectentry = Object.entries(restPractice.orderTime);
+      // for of loop and optional chaining
 
-  for (const [keys, { StartTime, EndTime }] of objectentry) {
-    console.log(
-      `on ${keys} the rest is open at ${StartTime} and close at ${EndTime}`
-    );
-  }
+      const days = ["mon", "tue", "wed", "thrus", "fri"];
 
-  //Sets Data Structure
+      for (const day of days) {
+        let openinghrs = restPractice.orderTime?.[day]?.StartTime ?? "Not Open";
+        console.log(`${day} is opening hr is ${openinghrs}`);
+      }
+      console.log(restPractice.order?.(1, 2) ?? "Method not exist");
 
-  let array = [1, 5, 4, 6, 2, 3, 2, 4, 10];
-  let sortarray = array.sort((a, b) => a - b); //for sort
-  let removedulp = new Set(sortarray); //remove duplicate
-  console.log(removedulp, sortarray);
-  let orderset = new Set(["Pizza", "Popcorn", "Pizza", "Burgur"]);
-  console.log(orderset);
+      // const openingHours = {
+      //   [days[2]]: {
+      //     open: 12,
+      //     close: 22,
+      //   },
+      //   [days[4]]: {
+      //     open: 9,
+      //     close: 18,
+      //   },
+      //   [days[1]]: {
+      //     open: 10,
+      //     close: 18,
+      //   },
+      // };
+      let Properties = Object.keys(restPractice.orderTime);
+      let restopen = `The Resturent is open at ${Properties.length} days `;
 
-  console.log(orderset.size); //can get the size of the set
-</script>
+      for (const day of Properties) {
+        restopen += `${day},`;
+      }
+      console.log(restopen);
+      let objectValue = Object.values(restPractice.orderTime);
+      console.log(objectValue);
+      let objectentry = Object.entries(restPractice.orderTime);
+
+      for (const [keys, { StartTime, EndTime }] of objectentry) {
+        console.log(
+          `on ${keys} the rest is open at ${StartTime} and close at ${EndTime}`
+        );
+      }
+
+      //Sets Data Structure
+
+      let array = [1, 5, 4, 6, 2, 3, 2, 4, 10];
+      let sortarray = array.sort((a, b) => a - b); //for sort
+      let removedulp = new Set(sortarray); //remove duplicate
+      console.log(removedulp, sortarray);
+      let orderset = new Set(["Pizza", "Popcorn", "Pizza", "Burgur"]);
+      console.log(orderset);
+
+      console.log(orderset.size); //can get the size of the set
+    </script>
+  </body>
+</html>
